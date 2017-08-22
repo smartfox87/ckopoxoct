@@ -1,0 +1,68 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.btn {
+  @include font--1(1.7vw, 1.55);
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0 15px;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid;
+  border-radius: 13px;
+  outline: none;
+  cursor: pointer;
+  &:hover {
+  }
+  &:active {
+  }
+}
+
+.btn--order {
+  color: #ffffff;
+  background-color: #ffc000;
+  border-color: #ffc000;
+  &:hover {
+    color: #e1a900;
+    background-color: #ffffff;
+  }
+}
+
+.btn--login {
+  color: #0470b6;
+  border-color: #5892c6;
+  &:hover {
+    color: #ffffff;
+    background-color: #4487c1;
+  }
+}
+
+@media ($mobile__width-mq) {
+  .btn {
+    padding: 0 4vw;
+    font-size: 4.7vw;
+    border-radius: 22px;
+  }
+  
+  .btn--order {
+    color: #000000;
+    background-color: #ffffff;
+  }
+  
+  .btn--login {
+    font-weight: 700;
+    font-size: 5.1vw;
+    line-height: 1.7;
+    color: #131414;
+    background-color: #ffc000;
+    border-color: #ffc000;
+    border-radius: 34px;
+  }
+}
+
+@media ($desktop__width-mq) {
+  .btn {
+    font-size: 27.2px;
+  }
+}

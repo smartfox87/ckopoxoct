@@ -1,0 +1,48 @@
+$font-family--1: "Arial", sans-serif;
+$font-family--2: "Somatic", sans-serif;
+$font-family--3: "Tahoma", sans-serif;
+$font-family--icon: false;
+
+$desktop__width-mq: "min-width: 1600px";
+$desktop__container-width: 100%;
+$desktop__container-max-width: 1600px;
+$desktop__container-padding: 3%;
+
+$mobile__width-mq: "max-width: 1024px";
+$mobile__container-width: 100%;
+$mobile__container-padding: 9vw;
+
+$white:            #ffffff;
+$white-opacity--1: rgba(255, 255, 255, 0.1);
+$white-opacity--2: rgba(255, 255, 255, 0.3);
+$black:            #000000;
+$black-light--1:   #242424;
+$black-light--2:   #292929;
+
+$black-light--3:   #353535;
+$black-light--4:   #3f3f3f;
+$black-light--5:   #404040;
+
+$black-light--6:   #4a4a4a;
+$black-light--7:   #4e4e4e;
+$black-light--8:   #545454;
+
+$black-opacity--2: rgba(0, 1, 1, 0.3);
+$black-opacity--3: rgba(0, 1, 1, 0.75);
+
+$gray-dark--2:     #999999;
+$gray-dark--1:     #d5c9bd;
+$gray:             #e5ddd5;
+
+$gray-light--1:    #f8f5f2;
+$gray-light--2:    #f7f4f1;
+$gray-light--3:    #f2f2f2;
+
+$brown-dark--5:    #6a4d38;
+$brown-dark--4:    #624530;
+
+$brown-dark--2:    #71543f;
+$brown-dark--3:    #755a46;
+
+$brown:            #826550;
+$brown-light--1:   #886e5b;
