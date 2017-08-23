@@ -38,16 +38,45 @@
   }
 }
 
+.btn--big {
+  @include font--1(1.6vw, 2.88);
+  margin-right: 7px;
+  text-transform: uppercase;
+  border-radius: 6px;
+}
+
+.btn--trial {
+  font-weight: 700;
+  color: #285981;
+  background-color: #ffc000;
+  box-shadow: 1.4px 1.4px 3px rgba(0, 0, 0, 0.23);
+  &:hover {
+    background-color: #ff9600;
+  }
+}
+
+.btn--more {
+  color: #ffffff;
+  border-color: #faf8f2;
+  &:hover {
+    background-color: rgba(255, 146, 0, 0.6);
+    border-color: rgba(255, 146, 0, 0.6);
+  }
+}
+
 @media ($mobile__width-mq) {
   .btn {
     padding: 0 4vw;
-    font-size: 4.7vw;
+    font-size: 4.36vw;
     border-radius: 22px;
   }
   
   .btn--order {
     color: #000000;
     background-color: #ffffff;
+    &:hover {
+      color: #000000;
+    }
   }
   
   .btn--login {
@@ -58,11 +87,29 @@
     background-color: #ffc000;
     border-color: #ffc000;
     border-radius: 34px;
+    &:hover {
+      color: #131414;
+      background-color: #ffc000;
+    }
+  }
+  
+  .btn--big {
+    font-size: 4.7vw;
+  }
+  
+  .btn--trial {
+    &:hover {
+      background-color: #ffc000;
+    }
   }
 }
 
 @media ($desktop__width-mq) {
   .btn {
     font-size: 27.2px;
+  }
+  
+  .btn--big {
+    font-size: 25.6px;
   }
 }

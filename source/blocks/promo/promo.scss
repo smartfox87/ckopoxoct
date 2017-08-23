@@ -1,10 +1,125 @@
-@import "../../scss/variables.scss";   
-@import "../../scss/mixins.scss";  
-/* шаблон вставки в html 
-
-*/   
+@import "../../scss/variables.scss";
+@import "../../scss/mixins.scss";
 
 .promo {
-  height: 100px;
-  background: #000000;
+  @include container($desktop__container-width, $desktop__container-padding + 3);
+  @include font--1(1.6vw, 1.38, #ffffff);
+  box-sizing: border-box;
+  max-width: 1600px;
+  background: #000000 url("../img/bg__promo.jpg") no-repeat;
+  //background-size: 100%;
+  background-size: cover;
+  @include pseudo-before(100%, 100%);
+  &::before {
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+}
+
+.promo__item {
+  display: flex;
+  flex-direction: column;
+  padding: 60px 150px 20px 0;
+}
+
+.promo__caption {
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+  font-size: 4.3vw;
+}
+
+.promo__description {
+  margin: 0;
+  padding: 0 0 35px;
+  font-size: 2.6vw;
+  color: #ffc000;
+}
+
+.promo__text {
+  max-height: 600px;
+  margin: 0 0 50px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.promo__buttons {
+  margin-top: auto;
+}
+
+.owl-prev {
+  left: 1vw;
+  background: url("../img/icon__prev--white.png") no-repeat;
+}
+
+.owl-next {
+  right: 1vw;
+  background: url("../img/icon__next--white.png") no-repeat;
+}
+
+.owl-prev,
+.owl-next {
+  position: absolute;
+  top: 50%;
+  width: 2.57vw;
+  height: 3.9vw;
+  background-size: contain;
+  &:hover {
+    opacity: 0.4;
+  }
+}
+
+@media ($mobile__width-mq) {
+  .promo {
+    @include container($mobile__container-width, $mobile__container-padding);
+    //background-size:;
+  }
+  .promo__item {
+    padding-top: 40px;
+    padding-right: 0;
+    padding-bottom: 30px;
+  }
+  .promo__caption {
+    padding-bottom: 20px;
+    font-size: 7.64vw;
+    line-height: 0.85;
+  }
+  
+  .promo__description {
+    font-size: 4.18vw;
+  }
+  
+  .promo__text {
+    font-size: 3.45vw;
+    line-height: 1.32;
+  }
+  
+  .promo__more {
+    display: none;
+  }
+  
+  .owl-prev,
+  .owl-next {
+    width: 5.4vw;
+    height: 8.18vw;
+    background-size: auto 8.18vw;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+@media ($desktop__width-mq) {
+  .promo__caption {
+    font-size: 67px;
+  }
+  
+  .promo__description {
+    font-size: 41.6px;
+  }
+  
+  .promo__text {
+    font-size: 25.6px;
+  }
 }
