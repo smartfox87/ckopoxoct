@@ -2,44 +2,45 @@
 @import "../../scss/mixins.scss";
 
 .promo {
-  @include container($desktop__container-width, $desktop__container-padding + 3);
+  @include container($desktop__container-width);
   @include font--1(1.6vw, 1.38, #ffffff);
   box-sizing: border-box;
+  min-width: 1024px;
   max-width: 1600px;
-  background: #000000 url("../img/bg__promo.jpg") no-repeat;
-  //background-size: 100%;
-  background-size: cover;
-  @include pseudo-before(100%, 100%);
-  &::before {
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-  }
+  font-size: calc(16px + (20 - 16) * (100vw - 1024px) / (1600 - 1024));
+  background-color: #000000;
 }
 
 .promo__item {
   display: flex;
   flex-direction: column;
-  padding: 60px 150px 20px 0;
+  box-sizing: border-box;
+  height: 45vw;
+  max-height: 435px;
+  padding: 60px 150px 20px 6%;
+  background: url("../img/bg__promo.jpg") no-repeat;
+  background-size: cover;
 }
 
 .promo__caption {
   margin: 0;
   padding: 0;
   font-weight: 700;
-  font-size: 4.3vw;
+  font-size: calc(44px + (54 - 44) * (100vw - 1024px) / (1600 - 1024));
 }
 
 .promo__description {
   margin: 0;
   padding: 0 0 35px;
-  font-size: 2.6vw;
+  font-size: calc(26px + (36 - 26) * (100vw - 1024px) / (1600 - 1024));
   color: #ffc000;
 }
 
 .promo__text {
-  max-height: 600px;
-  margin: 0 0 50px;
+  height: 6.1vw;
+  min-height: 65px;
+  max-height: 78px;
+  margin: 0;
   padding: 0;
   overflow: hidden;
 }
@@ -60,8 +61,7 @@
 
 .owl-prev,
 .owl-next {
-  position: absolute;
-  top: 50%;
+  @include center(absolute, false, true);
   width: 2.57vw;
   height: 3.9vw;
   background-size: contain;
@@ -72,14 +72,16 @@
 
 @media ($mobile__width-mq) {
   .promo {
-    @include container($mobile__container-width, $mobile__container-padding);
-    //background-size:;
+    @include container($mobile__container-width);
+    min-width: 300px;
   }
+  
   .promo__item {
-    padding-top: 40px;
-    padding-right: 0;
-    padding-bottom: 30px;
+    height: 95vw;
+    max-height: 850px;
+    padding: 40px $mobile__container-padding 30px;
   }
+  
   .promo__caption {
     padding-bottom: 20px;
     font-size: 7.64vw;
@@ -91,6 +93,8 @@
   }
   
   .promo__text {
+    height: 34.5vw;
+    max-height: 320px;
     font-size: 3.45vw;
     line-height: 1.32;
   }
@@ -112,14 +116,20 @@
 
 @media ($desktop__width-mq) {
   .promo__caption {
-    font-size: 67px;
+    font-size: 54px;
   }
   
   .promo__description {
-    font-size: 41.6px;
+    font-size: 36px;
   }
   
   .promo__text {
-    font-size: 25.6px;
+    font-size: 20px;
+  }
+  
+  .owl-next,
+  .owl-prev {
+    max-width: 41px;
+    max-height: 62px;
   }
 }

@@ -7,16 +7,13 @@
   display: inline-block;
   box-sizing: border-box;
   padding: 0 15px;
+  font-size: calc(17px + (20 - 17) * (100vw - 1024px) / (1600 - 1024));
   text-align: center;
   text-decoration: none;
   border: 1px solid;
   border-radius: 13px;
   outline: none;
   cursor: pointer;
-  &:hover {
-  }
-  &:active {
-  }
 }
 
 .btn--order {
@@ -39,16 +36,17 @@
 }
 
 .btn--big {
-  @include font--1(1.6vw, 2.88);
+  @include font--1(1.6vw, 2.5);
   margin-right: 7px;
   text-transform: uppercase;
   border-radius: 6px;
 }
 
-.btn--trial {
+.btn--yellow {
   font-weight: 700;
   color: #285981;
   background-color: #ffc000;
+  border-color: #ffc000;
   box-shadow: 1.4px 1.4px 3px rgba(0, 0, 0, 0.23);
   &:hover {
     background-color: #ff9600;
@@ -94,10 +92,12 @@
   }
   
   .btn--big {
-    font-size: 4.7vw;
+    width: 100%;
+    padding: 5px 15px;
+    font-size: 4.5vw;
   }
   
-  .btn--trial {
+  .btn--yellow {
     &:hover {
       background-color: #ffc000;
     }
@@ -106,7 +106,7 @@
 
 @media ($desktop__width-mq) {
   .btn {
-    font-size: 27.2px;
+    font-size: 20px;
   }
   
   .btn--big {

@@ -84,6 +84,24 @@
   box-sizing: border-box;
 }
 
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}
+
+@function calcFontSize($f-min, $f-max, $w-min, $w-max, $units: px) {
+  $f-min: strip-unit($f-min);
+  $f-max: strip-unit($f-max);
+  $w-min: strip-unit($w-min);
+  $w-max: strip-unit($w-max);
+  $k: ($f-max - $f-min)/($w-max - $w-min);
+  $b: $f-min - $k * $w-min;
+  $b: $b + $units;
+  @return calc( #{$k} * 100vw + #{$b} );
+}
+
 //шрифт 1-й (размер шрифта, высота строки, цвет, толщина шрифта, строчные или прописные)
 @mixin font--1($size: false,  $lh: false, $color: false, $weight: false, $transform: false) {
   font-family: $font-family--1;

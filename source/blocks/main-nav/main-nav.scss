@@ -8,20 +8,23 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  min-width: 1024px;
   max-width: $desktop__container-max-width;
   padding: 20px 10px;
+  font-size: calc(16px + (18 - 16) * (100vw - 1024px) / (1600 - 1024));
   background-color: #ffffff;
 }
 
 .main-nav__logo {
-  @include font--2(2.7vw, 1, #1b2034);
+  display: flex;
   flex-grow: 1;
+  justify-content: center;
   margin-right: 20px;
-  text-align: center;
-  text-transform: uppercase;
-  cursor: default;
-  span {
-    color: #ffc000;
+  img {
+    width: auto;
+    height: 2.4vw;
+    min-height: 25px;
+    max-height: 35px;
   }
 }
 
@@ -64,12 +67,12 @@
 .main-nav__phone {
   margin: 0 20px 0 30px;
   font-weight: 700;
-  font-size: 2.4vw;
+  font-size: calc(24px + (32 - 24) * (100vw - 1024px) / (1600 - 1024));
   color: #000000;
   text-decoration: none;
   span {
     font-weight: 400;
-    font-size: 2.2vw;
+    font-size: calc(22px + (30 - 22) * (100vw - 1024px) / (1600 - 1024));
     color: #859eae;
   }
 }
@@ -88,15 +91,18 @@
 
 @media ($mobile__width-mq) {
   .main-nav {
+    min-width: 300px;
     padding: 0;
   }
   
   .main-nav__logo {
     order: 2;
-    margin: 0;
+    margin: 5px 0 0;
     padding: 3.6vw 0;
-    font-size: 11.8vw;
     background-color: #ffffff;
+    img {
+      height: 9vw;
+    }
   }
   
   .main-nav__list {
@@ -108,8 +114,6 @@
     flex-direction: column;
     width: 73%;
     background-color: #fedd46;
-    //min-height: 115vw;
-    //padding-bottom: 40px;
   }
   
   .main-nav__list--show {
@@ -200,7 +204,7 @@
 
 @media ($desktop__width-mq) {
   .main-nav {
-    font-size: 27px;
+    font-size: 18px;
   }
   
   .main-nav__logo {
@@ -208,9 +212,9 @@
   }
   
   .main-nav__phone {
-    font-size: 38.4px;
+    font-size: 34px;
     span {
-      font-size: 35.2px;
+      font-size: 32px;
     }
   }
 }
