@@ -5,10 +5,17 @@ $(function () {
     nav: true,
     navText: [],
     dots: false,
-    loop: true,
-    stagePadding: 0,
-    margin: 10
+    loop: true
   });
+  if ($(window).outerWidth() < 768) {
+    $(".rates__list").owlCarousel({
+      items: 1,
+      nav: true,
+      navText: [],
+      dots: false,
+      loop: true
+    });
+  }
   $(".main-nav__toggle-menu").click(function (event) {
     event.preventDefault();
     if ($(this).hasClass("main-nav__toggle-menu--open")) {
@@ -22,10 +29,4 @@ $(function () {
     }
   });
   var fixedMenuDesktop = $(".main-nav").stickme();
-  // fixedMenuDesktop.update();
-  // if ($(window).with() >= 1024) {
-  // } else {
-  //   fixedMenuDesktop.destroy();
-  //   $(".main-nav__purchase-block").stickme();
-  // }
 });
