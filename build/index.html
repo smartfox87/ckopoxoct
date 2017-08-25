@@ -11,19 +11,20 @@
   <body>
     <header>
       <nav class="main-nav">
-  <div class="main-nav__logo"><span>Ckopo</span>xoct</div>
+  <div class="main-nav__logo">
+    <img src="../img/img__login.svg" alt="CKOPOXOCT"></div>
   <ul class="main-nav__list">
     <li class="main-nav__item">
       <a href="#">Серверы</a>
     </li>
     <li class="main-nav__item">
-      <a href="#">Тарифы</a>
+      <a href="#rates">Тарифы</a>
     </li>
     <li class="main-nav__item">
-      <a href="#">Плюсы</a>
+      <a href="#features">Плюсы</a>
     </li>
     <li class="main-nav__item">
-      <a href="#">Поддержка</a>
+      <a href="#support">Поддержка</a>
     </li>
     <div class="main-nav__user-block  main-nav__user-block--mobile">
       <a href="#" class="user-menu__login  btn  btn--login">Войти</a>
@@ -32,20 +33,154 @@
   <div class="main-nav__purchase-block">
     <a href="#" class="main-nav__order  btn  btn--order">Заказ</a>
     <a href="tel:+375172780045" class="main-nav__phone"><span>+375 17</span> 278-00-45</a>
-    <div class="main-nav__toggle-menu  main-nav__toggle-menu--open  main-nav__toggle-menu--close"><span></span></div>
+    <div class="main-nav__toggle-menu  main-nav__toggle-menu--open"><span></span></div>
   </div>
   <div class="main-nav__user-block  main-nav__user-block--desktop">
     <a href="#" class="user-menu__login  btn  btn--login">Войти</a>
   </div>
 </nav>
 
-      <div class="promo">
-
-</div>
-
     </header>
     <main>
+      <div class="promo  owl-carousel">
+  <div class="promo__item">
+    <h1 class="promo__caption">Обгоняйте конкурентов Online!</h1>
+    <p class="promo__description">Быстрые серверы для Битрикс с уникальным пакетом услуг</p>
+    <p class="promo__text">Уникальное комплексное предложение для магазинов, сайтов и порталов на платформе
+      1С-Битрикс. Все, что нужно для роста онлайн-продаж и роста. Мы лучше других знаем, что нужно для быстрой
+      работы вашего проекта - на базе 15-летнего опыта компании "Новый Сайт", лидера
+      разработки на 1С-Битрикс. в Беларуси</p>
+    <div class="promo__buttons">
+      <a class="promo__trial  btn  btn--big  btn--yellow" href="#">Попробовать бесплатно</a>
+      <a class="promo__more  btn  btn--big  btn--more" href="#">Узнать больше</a>
+    </div>
+  </div>
+  <div class="promo__item">
+    <h3 class="promo__caption">Обгоняйте конкурентов Online!</h3>
+    <p class="promo__description">Быстрые серверы для Битрикс с уникальным пакетом услуг</p>
+    <p class="promo__text">Уникальное комплексное предложение для магазинов, сайтов и порталов на платформе
+      1С-Битрикс.
+      Все, что нужно для роста онлайн-продаж и роста. Мы лучше других знаем, что нужно для быстрой
+      работы вашего проекта - на базе 15-летнего опыта компании "Новый Сайт", лидера
+      разработки на 1С-Битрикс. в Беларуси
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquid aut cupiditate, earum error id in,
+      modi odit omnis sequi sit ullam?</p>
+    <div class="promo__buttons">
+      <a class="promo__trial  btn  btn--big  btn--yellow" href="#">Попробовать бесплатно</a>
+      <a class="promo__more  btn  btn--big  btn--more" href="#">Узнать больше</a>
+    </div>
+  </div>
+</div>
+
+      <div class="rates" id="rates">
+  <h2 class="rates__title">Тарифы на серверы</h2>
+  <div class="rates__list  owl-carousel">
+    <div class="rates__item  rates__item--hit">
+      <h3 class="rates__caption">Быстро-2</h3>
+      <p class="rates__description">Тариф для средних сайтов и
+        интернет-магазинов на 1С-Битрикс
+        на выделенных дисках SSD с бэкапом и https</p>
+      <div class="rates__specification">
+        <div><span>Ядра процессора ........................................</span><b>2</b></div>
+        <div><span>Память, Гб ..................................................</span><b>4</b></div>
+        <div><span>SSD, Гб ......................................................</span><b>30</b></div>
+        <div><span>Выделенный SSD ......................................</span><i></i></div>
+        <div><span>Аппаратный Raid .......................................</span><i></i></div>
+        <div><span>Бэкап ежедневный .....................................</span><b>1</b></div>
+        <div><span>Бесплатный https на год ...........................</span><i></i></div>
+        <div><span>Внешний траффик ..................</span><b>бесплатный</b></div>
+        <div><span>Почта, место ........................</span><b>неограничено</b></div>
+        <div><span>Бесплатный перенос .................................</span><i></i></div>
+      </div>
+      <div class="rates__cost">
+        <div class="rates__month"><span>49</span> у.е./мес.</div>
+        <label class="rates__time" for="rates__2">
+          <span>по курсу НБРБ при оплате за</span>
+          <select id="rates__2">
+            <option value="1">1 месяц</option>
+            <option value="3">3 месяца</option>
+            <option value="6">6 месяцев</option>
+            <option value="12">1 год</option>
+          </select>
+        </label>
+      </div>
+      <div class="rates__buttons">
+        <a class="rates__order  btn  btn--big  btn--yellow" href="#order">Заказать</a>
+        <a class="rates__trial" href="#">Попробовать бесплатно</a>
+      </div>
+    </div>
+    <div class="rates__item">
+      <h3 class="rates__caption">Быстро-4</h3>
+      <p class="rates__description">Тариф для средних сайтов и
+        интернет-магазинов на 1С-Битрикс
+        на выделенных дисках SSD с бэкапом и https</p>
+      <div class="rates__specification">
+        <div><span>Ядра процессора ........................................</span><b>2</b></div>
+        <div><span>Память, Гб ..................................................</span><b>4</b></div>
+        <div><span>SSD, Гб ......................................................</span><b>30</b></div>
+        <div><span>Выделенный SSD ......................................</span><i></i></div>
+        <div><span>Аппаратный Raid .......................................</span><i></i></div>
+        <div><span>Бэкап ежедневный .....................................</span><b>1</b></div>
+        <div><span>Бесплатный https на год ...........................</span><i></i></div>
+        <div><span>Внешний траффик ..................</span><b>бесплатный</b></div>
+        <div><span>Почта, место ........................</span><b>неограничено</b></div>
+        <div><span>Бесплатный перенос .................................</span><i></i></div>
+      </div>
+      <div class="rates__cost">
+        <div class="rates__month"><span>79</span> у.е./мес.</div>
+        <label class="rates__time" for="rates__4">
+          <span>по курсу НБРБ при оплате за</span>
+          <select id="rates__4">
+            <option value="1">1 месяц</option>
+            <option value="3">3 месяца</option>
+            <option value="6">6 месяцев</option>
+            <option value="12">1 год</option>
+          </select>
+        </label>
+      </div>
+      <div class="rates__buttons">
+        <a class="rates__order  btn  btn--big  btn--yellow" href="#order">Заказать</a>
+        <a class="rates__trial" href="#">Попробовать бесплатно</a>
+      </div>
+    </div>
+    <div class="rates__item  rates__item--advanced">
+      <div class="rates__additionally">
+        <h3>Дополнительно:</h3>
+        <div><i>Бэкап доп., копия .......................</i><span>$1.99</span></div>
+        <div><i>Продление https, год .................</i><span>$9.99</span></div>
+        <div><i>Доп. ядро процессора ...............</i><span>$7.49</span></div>
+        <div><i>Доп. память, гб./мес ..................</i><span>$9.99</span></div>
+        <div><i>Доп. место HDD, 10 гб/мес ........</i><span>-</span></div>
+        <div><i>Доп. место SSD, 10 гб/мес ........</i><span>$4.99</span></div>
+        <div><i>Доп. SUPER SSD, 10 гб/мес .....</i><span>$9.99</span></div>
+        <div><i>Доп.IP-адрес ..............................</i><span>$2.99</span></div>
+        <div><i>Премиум поддержка ..................</i><span>$29</span></div>
+      </div>
+      <div class="rates__discount">
+        <h3><span>Получите </span>скидку до 12%</h3>
+        <div><span>3%</span> - при оплате за квартал</div>
+        <div><span>6%</span> - при оплате за пол года</div>
+        <div><span>12%</span> - при оплате за год</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="features" id="features">
+<h2>Особености</h2>
+</div>
+
+      <div class="awards" id="awards">
+<h2>Почему наши сервера оптимальны для 1С-Битрикс?</h2>
+</div>
+
+      <div class="support" id="support">
+<h2>Поддержка SLA</h2>
+</div>
 
     </main>
+
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script defer src="js/script.min.js"></script>
   </body>
 </html>
