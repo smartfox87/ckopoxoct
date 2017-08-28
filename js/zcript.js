@@ -1,7 +1,19 @@
 $(function () {
   var menu = $(".main-nav__list");
+  var logo = $(".main-nav__logo");
   var fixedMenuDesktop = $(".main-nav").stickme();
 
+  // переключение тени шапки при скроллинге
+  $(window).scroll(function () {
+    if ($(document).scrollTop() > 0) {
+      console.log("w");
+      fixedMenuDesktop.addClass("main-nav--shadow");
+    } else {
+      fixedMenuDesktop.removeClass("main-nav--shadow");
+    }
+  });
+
+  // слайдер второго этажа промо блока
   $(".promo").owlCarousel({
     items: 1,
     nav: true,
@@ -10,6 +22,7 @@ $(function () {
     loop: true
   });
 
+  // слайдер блока тарифов на мобильной версии
   if ($(window).outerWidth() < 768) {
     $(".rates__list").owlCarousel({
       items: 1,
@@ -20,27 +33,33 @@ $(function () {
     });
   }
 
+// переключение состояния меню и логотипа мобильной версии
   $(".main-nav__toggle-menu").click(function (event) {
     event.preventDefault();
     if ($(this).hasClass("main-nav__toggle-menu--open")) {
       $(this).removeClass("main-nav__toggle-menu--open");
       $(this).addClass("main-nav__toggle-menu--close");
       menu.addClass("main-nav__list--show");
+      logo.addClass("main-nav__logo--hide");
     } else {
       $(this).removeClass("main-nav__toggle-menu--close");
       $(this).addClass("main-nav__toggle-menu--open");
       menu.removeClass("main-nav__list--show");
+      logo.removeClass("main-nav__logo--hide");
     }
   });
 
+  // проверка на число
   function isNumeric(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
   }
 
+  // запись начальной цены тарифа в атрибут
   function writeCostMonth(output) {
     $(output).data("cost", $(output).text());
   }
 
+  // вычисление скидки на выбранный тариф
   function calcDiscount(input, output) {
     var costMonth = $(output).data("cost");
     var countMonth = $(input).val();
@@ -64,6 +83,7 @@ $(function () {
     return "Некорректное число";
   }
 
+  // вывод цены на выбранный тариф со скидкой
   function outputCostRate(call, input, output) {
     var cost = call(input, output);
     $(output).text(cost);
@@ -80,4 +100,18 @@ $(function () {
     outputCostRate(calcDiscount, "#rates__2", "#rates__output--2");
   });
 
+});
+
+$(window).on("load", function () {
+  $(".promo__text").each(function (ind) {
+    var parentHeight = $(this).height();
+    var childHeight = $(this).children("p").height();
+    console.log(parentHeight);
+    console.log(childHeight);
+    if (parentHeight <= childHeight) {
+      $(this).addClass("promo__text--full");
+    } else {
+      $(this).removeClass("promo__text--full");
+    }
+  });
 });
