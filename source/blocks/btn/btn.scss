@@ -2,18 +2,19 @@
 @import '../../scss/mixins';
 
 .btn {
-  @include font--1(1.7vw, 1.55);
   position: relative;
   display: inline-block;
   box-sizing: border-box;
-  padding: 0 15px;
-  font-size: calc(17px + (20 - 17) * (100vw - 1024px) / (1600 - 1024));
+  padding: 0 calcFontSize(15, 16, 1024, 1600);
+  font-size: calcFontSize(17, 18.5, 1024, 1600);
+  line-height: 1.55;
   text-align: center;
   text-decoration: none;
   border: 1px solid;
-  border-radius: 13px;
+  border-radius: calcFontSize(13, 19.5, 1024, 1600);
   outline: none;
   cursor: pointer;
+  transition-duration: $btn-duration-anim;
 }
 
 .btn--order {
@@ -36,10 +37,12 @@
 }
 
 .btn--big {
-  @include font--1(1.6vw, 2.5);
-  margin-right: 7px;
+  margin-right: calcFontSize(7, 11, 1024, 1600);
+  padding: 0 calcFontSize(20, 30, 1024, 1600);
+  font-size: calcFontSize(16, 18, 1024, 1600);
+  line-height: 2.7;
   text-transform: uppercase;
-  border-radius: 6px;
+  border-radius: calcFontSize(6, 9, 1024, 1600);
 }
 
 .btn--yellow {
@@ -50,6 +53,31 @@
   box-shadow: 1.4px 1.4px 3px rgba(0, 0, 0, 0.23);
   &:hover {
     background-color: #ff9600;
+  }
+}
+
+.btn--transparent {
+  width: calcFontSize(130, 155, 1024, 1600);
+  margin-right: 0;
+  padding: calcFontSize(3, 4.5, 1024, 1600) 0;
+  font-size: calcFontSize(14, 16, 1024, 1600);
+  line-height: 1.36;
+  color: #69a5d1;
+  text-transform: none;
+  border-color: #ffc000;
+  &:hover {
+    color: #0470b6;
+    border-color: #ff9600;
+  }
+}
+
+.btn--blue {
+  font-weight: 700;
+  color: #ffffff;
+  background-color: #0470b6;
+  border-color: #0470b6;
+  &:hover{
+    opacity: 0.8;
   }
 }
 
@@ -65,7 +93,7 @@
 @media ($mobile__width-mq) {
   .btn {
     padding: 0 4vw;
-    font-size: 4.36vw;
+    font-size: 4.73vw;
     border-radius: 22px;
   }
   
@@ -94,22 +122,49 @@
   .btn--big {
     width: 100%;
     padding: 5px 15px;
-    font-size: 4.5vw;
+    font-size: 8vw;
+    line-height: 2;
+    border-radius: 2.78vw;
+  }
+  
+  .btn--transparent {
+    padding: 0;
+    font-size: 4.7vw;
+    border-radius: 1.5vw;
   }
   
   .btn--yellow {
+    font-size: 5vw;
+    border-radius: 1.67vw;
     &:hover {
       background-color: #ffc000;
     }
+  }
+  
+  .btn--blue {
+    font-size: 4.5vw;
+    border-radius: 1.2vw;
   }
 }
 
 @media ($desktop__width-mq) {
   .btn {
-    font-size: 20px;
+    padding: 0 16px;
+    font-size: 18px;
+    border-radius: 19px;
   }
   
   .btn--big {
-    font-size: 25.6px;
+    margin-right: 11px;
+    padding: 0 30px;
+    font-size: 18px;
+    border-radius: 9px;
+  }
+  
+  .btn--transparent {
+    width: 155px;
+    margin-right: 0;
+    padding: 4px 0;
+    font-size: 16px;
   }
 }

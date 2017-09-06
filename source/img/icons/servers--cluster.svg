@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.23 67.23">
+    <defs>
+        <style>.cls-1{fill:#45484a;}</style>
+    </defs>
+    <title>servers--clusterРесурс 5</title>
+    <g id="Слой_2" data-name="Слой 2">
+        <g id="_1" data-name=" 1">
+            <circle class="cls-1" cx="33.62" cy="7.32" r="7.32"/>
+            <circle class="cls-1" cx="15.02" cy="15.02" r="7.32" transform="translate(-6.22 15.02) rotate(-45)"/>
+            <circle class="cls-1" cx="7.32" cy="33.62" r="7.32"/>
+            <circle class="cls-1" cx="15.02" cy="52.21" r="7.32" transform="translate(-32.52 25.91) rotate(-45)"/>
+            <circle class="cls-1" cx="33.62" cy="59.91" r="7.32"/>
+            <circle class="cls-1" cx="52.21" cy="52.21" r="7.32" transform="translate(-21.63 52.21) rotate(-45)"/>
+            <circle class="cls-1" cx="59.91" cy="33.62" r="7.32"/>
+            <circle class="cls-1" cx="52.21" cy="15.02" r="7.32" transform="translate(4.67 41.32) rotate(-45)"/>
+            <circle class="cls-1" cx="33.62" cy="33.62" r="10.72"/>
+        </g>
+    </g>
+</svg>

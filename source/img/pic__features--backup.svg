@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 45.35 36.4">
+    <defs>
+        <style>
+            .cls-1{fill:url(#New_Gradient_Swatch_3);}.cls-2{fill:url(#New_Gradient_Swatch_4);}.cls-3{fill:url(#New_Gradient_Swatch_4-2);}
+        </style>
+        <linearGradient id="New_Gradient_Swatch_3" x1="19.88" x2="19.88" y2="36.31" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#a4acb4"/>
+            <stop offset="0.21" stop-color="#9ea5ad"/>
+            <stop offset="0.52" stop-color="#8c929a"/>
+            <stop offset="0.88" stop-color="#70747a"/>
+            <stop offset="1" stop-color="#65686e"/>
+        </linearGradient>
+        <linearGradient id="New_Gradient_Swatch_4" x1="35.43" y1="21.48" x2="35.43" y2="36.4"
+                        gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#ee7d00"/>
+            <stop offset="0.24" stop-color="#ec7901"/>
+            <stop offset="0.49" stop-color="#e56c03"/>
+            <stop offset="0.75" stop-color="#da5707"/>
+            <stop offset="1" stop-color="#cb3b0c"/>
+        </linearGradient>
+        <linearGradient id="New_Gradient_Swatch_4-2" x1="35.43" y1="9.84" x2="35.43" y2="20.39"
+                        xlink:href="#New_Gradient_Swatch_4"/>
+    </defs>
+    <title>pic__features--backupРесурс 5</title>
+    <g id="Слой_2" data-name="Слой 2">
+        <g id="Symbol">
+            <path class="cls-1"
+                  d="M0,6.25V4.52A4.69,4.69,0,0,1,4.84,0H34.91a4.69,4.69,0,0,1,4.85,4.52V6.25A4.27,4.27,0,0,1,39,8.63a8.63,8.63,0,0,0-3.58-.79,8.75,8.75,0,0,0-6.49,2.92H4.84A4.69,4.69,0,0,1,0,6.25Zm35.43,8.87a2,2,0,0,0-2,2V19.5H37.4V17.16A2,2,0,0,0,35.43,15.12ZM4.84,23.54H23.67a4.89,4.89,0,0,1,2.81-3.66V17.16a9.53,9.53,0,0,1,1.06-4.39H4.84A4.69,4.69,0,0,0,0,17.29V19A4.69,4.69,0,0,0,4.84,23.54Zm18.75,10v-8H4.84A4.68,4.68,0,0,0,0,30.05v1.73a4.69,4.69,0,0,0,4.84,4.52H24.45A5,5,0,0,1,23.59,33.5Z"/>
+            <path class="cls-2"
+                  d="M45.35,24.39V33.5a2.85,2.85,0,0,1-2.8,2.9H28.3a2.85,2.85,0,0,1-2.8-2.9V24.39a2.85,2.85,0,0,1,2.8-2.91H42.55A2.85,2.85,0,0,1,45.35,24.39Zm-7.95,3a2,2,0,1,0-4,0,2.1,2.1,0,0,0,.8,1.65v2.5a1.18,1.18,0,1,0,2.36,0V29A2.1,2.1,0,0,0,37.4,27.35Z"/>
+            <path class="cls-3" d="M31.55,17.16a3.88,3.88,0,1,1,7.76,0v3.23h3.15V17.16a7,7,0,1,0-14.07,0v3.23h3.16Z"/>
+        </g>
+    </g>
+</svg>

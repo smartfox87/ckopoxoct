@@ -3,7 +3,7 @@
 @import "variables";
 @import "mixins";
 @import "include/owl.carousel";
-@import "include/main";
+@import "sprite";
 @import "../blocks/main-nav/main-nav.scss";
 @import "../blocks/btn/btn.scss";
 @import "../blocks/promo/promo.scss";
@@ -15,3 +15,5 @@
 @import "../blocks/support/support.scss";
 @import "../blocks/order/order.scss";
 @import "../blocks/awards/awards.scss";
+@import "../blocks/main/main.scss";
+@import "../blocks/reviews/reviews.scss";

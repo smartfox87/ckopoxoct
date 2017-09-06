@@ -4,13 +4,18 @@ $font-family--3: "Tahoma", sans-serif;
 $font-family--icon: false;
 
 $desktop__width-mq: "min-width: 1600px";
-$desktop__container-width: 100%;
+$desktop__container-width: auto;
+$desktop__container-min-width: 1024px;
 $desktop__container-max-width: 1600px;
-$desktop__container-padding: 3%;
+$desktop__container-padding: 5%;
 
 $mobile__width-mq: "max-width: 768px";
-$mobile__container-width: 100%;
-$mobile__container-padding: 10vw;
+$mobile__container-width: auto;
+$mobile__container-min-width: 320px;
+$mobile__container-max-width: 768px;
+$mobile__container-padding: 9%;
+
+$btn-duration-anim: 300ms;
 
 $white:            #ffffff;
 $white-opacity--1: rgba(255, 255, 255, 0.1);

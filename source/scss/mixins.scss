@@ -13,6 +13,7 @@
     content: $content;
     display: $display;
     position: $pos;
+    box-sizing: border-box;
   }
 }
 
@@ -24,6 +25,7 @@
     content: $content;
     display: $display;
     position: $pos;
+    box-sizing: border-box;
   }
 }
 

@@ -1,9 +1,121 @@
-@import "../../scss/variables.scss";   
-@import "../../scss/mixins.scss";  
-/* шаблон вставки в html 
-
-*/   
+@import "../../scss/variables.scss";
+@import "../../scss/mixins.scss";
 
 .partners {
+  @include container($desktop__container-width);
+  @include font--1(19px, 1.42, #0470b6);
+  min-width: $desktop__container-min-width;
+  max-width: $desktop__container-max-width;
+  padding: 65px $desktop__container-padding 103px;
+  .owl-prev,
+  .owl-next {
+    color: #409adb;
+    opacity: 0.7;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  .owl-prev {
+    left: -4.8%;
+  }
+  .owl-next {
+    right: -4.8%;
+  }
+}
+
+.partners__title {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  font-size: calcFontSize(45, 50, 1024, 1600);
+  text-align: center;
+}
+
+.partners__list {
+  @include pseudo-after(200px, 100%);
+  position: relative;
+  &::after {
+    @include gradient-x(transparent, #ffffff, 0%, 90%);
+    top: 0;
+    right: -3px;
+  }
+}
+
+.partners__item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 275px;
+  height: 190px;
+  overflow: hidden;
+  img {
+    @include img-size();
+    display: inline-block !important;
+    width: auto !important;
+  }
+}
+
+.partners__item--5-element {
+  width: 260px;
+}
+
+.partners__item--oma {
+  width: 170px;
+}
+
+.partners__item--technics {
+  width: 180px;
+}
+
+.partners__item--alfa {
+  width: 248px;
+  img {
+    padding-top: 8px;
+  }
+}
+
+.partners__item--neighbors {
+  width: 255px;
+  img {
+    width: 216px;
+    height: 56.67px;
+  }
+}
+
+@media ($mobile__width-mq) {
+  .partners {
+    @include container($mobile__container-width);
+    min-width: $mobile__container-min-width;
+    max-width: $mobile__container-max-width;
+    padding: 50px $mobile__container-padding;
+    .owl-prev,
+    .owl-next {
+      opacity: 0.6;
+    }
+    .owl-prev {
+      left: -8vw;
+    }
+    .owl-next {
+      right: -8vw;
+    }
+  }
   
+  .partners__title {
+    font-size: 17.1vw;
+    line-height: 0.7;
+  }
+  
+  .partners__item {
+    height: 180px;
+  }
+}
+
+@media ($desktop__width-mq) {
+  .partners {
+    padding: 65px 80px 103px;
+  }
+  
+  .partners__title {
+    font-size: 50px;
+  }
 }

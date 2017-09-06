@@ -3,46 +3,49 @@
 
 .main-nav {
   @include container($desktop__container-width, $desktop__container-padding);
-  @include font--1(1.7vw, 1.40);
   position: relative;
+  z-index: 5;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  min-width: 1024px;
   max-width: $desktop__container-max-width;
-  padding: 20px 10px;
-  font-size: calc(16px + (18 - 16) * (100vw - 1024px) / (1600 - 1024));
+  padding-top: calcFontSize(16, 18, 1024, 1600);
+  padding-bottom: calcFontSize(16, 18, 1024, 1600);
+  font-size: calcFontSize(17, 19, 1024, 1600);
+  line-height: 1.38;
   background-color: #ffffff;
 }
 
 .main-nav__logo {
-  display: flex;
-  flex-grow: 1;
-  justify-content: center;
+  flex-grow: 3;
   margin-right: 20px;
   img {
-    width: auto;
-    height: 2.4vw;
-    min-height: 25px;
-    max-height: 35px;
+    width: 16.89vw;
+    min-width: 173px;
+    max-width: 260px;
+    height: 2.03vw;
+    min-height: 21px;
+    max-height: 31px;
+    vertical-align: top;
   }
 }
 
 .main-nav__list {
   display: flex;
-  flex-grow: 1;
+  flex-grow: 2;
   flex-wrap: wrap;
+  justify-content: space-around;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .main-nav__item {
-  flex-grow: 1;
   a {
     position: relative;
-    margin: 0 10px;
-    padding: 10px 0;
+    display: block;
+    margin: 0 14px 0 0;
+    padding: 8px 0;
     color: #0470b6;
     text-decoration: none;
     &:hover {
@@ -58,21 +61,21 @@
 
 .main-nav__purchase-block {
   display: flex;
-  flex-grow: 1;
-  justify-content: center;
+  flex-grow: 3;
+  justify-content: space-around;
   align-items: center;
-  padding: 0 10px;
 }
 
 .main-nav__phone {
-  margin: 0 20px 0 30px;
+  margin-right: 14px;
+  margin-left: 20px;
   font-weight: 700;
-  font-size: calc(24px + (32 - 24) * (100vw - 1024px) / (1600 - 1024));
+  font-size: calcFontSize(22, 30, 1024, 1600);
   color: #000000;
   text-decoration: none;
   span {
     font-weight: 400;
-    font-size: calc(22px + (30 - 22) * (100vw - 1024px) / (1600 - 1024));
+    font-size: calcFontSize(20, 27, 1024, 1600);
     color: #859eae;
   }
 }
@@ -82,7 +85,9 @@
 }
 
 .main-nav__user-block {
+  display: flex;
   flex-grow: 1;
+  justify-content: flex-end;
 }
 
 .main-nav__user-block--mobile {
@@ -91,33 +96,48 @@
 
 @media ($mobile__width-mq) {
   .main-nav {
-    min-width: 300px;
     padding: 0;
   }
   
   .main-nav__logo {
+    display: flex;
+    justify-content: center;
     order: 2;
-    margin: 5px 0 0;
-    padding: 3.6vw 0;
+    margin: 0;
+    padding: 5.45vw 0;
     background-color: #ffffff;
     img {
-      height: 9vw;
+      width: 82vw;
+      max-width: 550px;
+      height: 10vw;
+      max-height: 100px;
+      transition-duration: 0.4s;
+    }
+  }
+  
+  .main-nav__logo--hide {
+    img {
+      opacity: 0;
     }
   }
   
   .main-nav__list {
     position: absolute;
-    top: 10.8vw;
+    top: 6vh;
     right: 0;
     z-index: 10;
-    display: none;
     flex-direction: column;
     width: 73%;
+    height: 94vh;
     background-color: #fedd46;
+    opacity: 0;
+    transition-duration: 0.4s;
+    transform: translateX(100%);
   }
   
   .main-nav__list--show {
-    display: block;
+    opacity: 1;
+    transform: translateX(0);
   }
   
   .main-nav__item {
@@ -142,8 +162,9 @@
     z-index: 20;
     justify-content: space-between;
     align-items: center;
-    min-width: 80%;
-    padding: 1.8vw $mobile__container-padding;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 1.82vw 20.91vw 1.82vw $mobile__container-padding;
     background-color: #fedd46;
     border-bottom: 1px solid #ffc000;
   }
@@ -155,16 +176,11 @@
   .main-nav__phone {
     margin: 0;
     font-weight: 400;
-    font-size: 5.2vw;
+    font-size: 5.24vw;
     span {
-      font-size: 4.7vw;
+      font-size: 4.81vw;
       color: #000000;
     }
-  }
-  
-  .main-nav__toggle-menu {
-    display: block;
-    order: 3;
   }
   
   .main-nav__toggle-menu--open {
@@ -175,7 +191,6 @@
   }
   
   .main-nav__toggle-menu--close {
-    position: relative;
     align-self: flex-start;
     width: 7.2vw;
     &::after {
@@ -188,6 +203,12 @@
         border-radius: 4px;
       }
     }
+  }
+  
+  .main-nav__toggle-menu {
+    position: absolute;
+    right: $mobile__container-padding;
+    display: block;
   }
   
   .main-nav__user-block--mobile {
@@ -204,17 +225,18 @@
 
 @media ($desktop__width-mq) {
   .main-nav {
-    font-size: 18px;
-  }
-  
-  .main-nav__logo {
-    font-size: 43px;
+    padding: 18px 80px;
+    font-size: 19px;
   }
   
   .main-nav__phone {
-    font-size: 34px;
+    font-size: 30px;
     span {
-      font-size: 32px;
+      font-size: 27px;
     }
+  }
+  
+  .main-nav__order {
+    margin-left: -15px;
   }
 }

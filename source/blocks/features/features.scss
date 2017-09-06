@@ -1,10 +1,221 @@
 @import "../../scss/variables.scss";
 @import "../../scss/mixins.scss";
 
-/* шаблон вставки в html 
-
-*/
-
 .features {
-  height: 450px;
+  @include container($desktop__container-width);
+  @include font--1(22px, 1.2, #000000);
+  min-width: $desktop__container-min-width;
+  max-width: $desktop__container-max-width;
+  padding: 3.18em 0 4.09em;
+  font-size: calcFontSize(22, 25, 1024, 1600);
+  background-color: #ffffff;
+}
+
+.features__title {
+  margin: 0 0 0.6em;
+  padding: 0;
+  font-weight: 400;
+  font-size: calcFontSize(45, 51, 1024, 1600);
+  line-height: 1.2;
+  text-align: center;
+  color: #0470b6;
+}
+
+.features__list {
+  display: flex;
+  justify-content: space-around;
+  box-sizing: border-box;
+  margin-bottom: 2.28em;
+  padding: 0 $desktop__container-padding 0 $desktop__container-padding + 9;
+}
+
+.features__column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.features__item {
+  box-sizing: border-box;
+  width: 39vw;
+  max-width: 590px;
+  padding: 1.05em 0 0.91em 2.92em;
+}
+
+.features__name {
+  @include pseudo-before(1.64em, 1.92em);
+  position: relative;
+  display: inline-block;
+  padding-right: 0.23em;
+  border-bottom: 1px dashed #0470b6;
+  cursor: pointer;
+  &:hover {
+    color: #0470b6;
+  }
+  &::before {
+    bottom: 0.1em;
+    left: -2.64em;
+    background: url(../img/pic__features--bitrix.svg) 0 bottom / 100% no-repeat;
+  }
+}
+
+.features__name--bitrix {
+  &::before {
+    bottom: 0;
+  }
+}
+
+.features__name--ssd {
+  &::before {
+    left: -2.74em;
+    width: 1.82em;
+    background-image: url(../img/pic__features--ssd.svg);
+  }
+}
+
+.features__name--power {
+  &::before {
+    background-image: url(../img/pic__features--power.svg);
+  }
+}
+
+.features__name--backup {
+  &::before {
+    background-image: url(../img/pic__features--backup.svg);
+  }
+}
+
+.features__name--https {
+  &::before {
+    background-image: url(../img/pic__features--https.svg);
+  }
+}
+
+.features__name--traffic {
+  &::before {
+    background-image: url(../img/pic__features--traffic.svg);
+  }
+}
+
+.features__name--mail {
+  &::before {
+    left: -2.92em;
+    width: 2.28em;
+    background-image: url(../img/pic__features--mail.svg);
+  }
+}
+
+.features__name--monitoring {
+  &::before {
+    background-image: url(../img/pic__features--monitoring.svg);
+  }
+}
+
+.features__text {
+  box-sizing: border-box;
+  width: 32vw;
+  margin: 0;
+  padding: 0.7em;
+  font-size: calcFontSize(15, 17, 1024, 1600);
+  line-height: 1.2;
+  color: #000000;
+  background-color: #e3e3e3;
+  border-radius: 0.5vw;
+  cursor: default;
+}
+
+.features__button {
+  display: flex;
+  justify-content: center;
+}
+
+@media ($mobile__width-mq) {
+  .features {
+    @include container($mobile__container-width);
+    min-width: $mobile__container-min-width;
+    max-width: $mobile__container-max-width;
+    padding: $mobile__container-padding;
+    font-size: 5vw;
+    .owl-prev,
+    .owl-next {
+      color: #79add7;
+      opacity: 0.7;
+    }
+    .owl-prev {
+      left: -8vw;
+    }
+    .owl-next {
+      right: -8vw;
+    }
+  }
+  
+  .features__title {
+    margin-bottom: 9vw;
+    font-size: 13vw;
+    text-align: left;
+  }
+  
+  .features__list {
+    margin-bottom: 4vw;
+    padding: 0 0 5vw;
+  }
+  
+  .features__item {
+    width: auto;
+    padding-left: 14.5vw;
+  }
+  
+  .features__name {
+    &::before {
+      left: -14vw;
+      width: 10vw;
+      height: 10vw;
+    }
+  }
+  
+  .features__name--https {
+    &::before {
+      width: 9vw;
+      height: 11vw;
+    }
+  }
+  
+  .features__name--mail {
+    &::before {
+      width: 12vw;
+    }
+  }
+  
+  .features__text {
+    width: 67vw;
+  }
+  
+  .features__button {
+    padding-bottom: $mobile__container-padding*1.5;
+  }
+}
+
+@media ($desktop__width-mq) {
+  .features {
+    font-size: 25px;
+  }
+  
+  .features__title {
+    margin-bottom: 41px;
+    font-size: 51px;
+  }
+  
+  .features__list {
+    margin-bottom: 75px;
+  }
+  
+  .features__item {
+    margin-left: 87px;
+  }
+  
+  .features__text {
+    width: 500px;
+    font-size: 17px;
+    border-radius: 8px;
+  }
 }
