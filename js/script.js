@@ -148,37 +148,17 @@ a.fn.owlCarousel.Constructor.Plugins.Animate=e}(window.Zepto||window.jQuery,wind
 
 !function(a,b){"function"==typeof define&&define.amd?define([],function(){return a.svg4everybody=b()}):"object"==typeof module&&module.exports?module.exports=b():a.svg4everybody=b()}(this,function(){function a(a,b,c){if(c){var d=document.createDocumentFragment(),e=!b.hasAttribute("viewBox")&&c.getAttribute("viewBox");e&&b.setAttribute("viewBox",e);for(var f=c.cloneNode(!0);f.childNodes.length;)d.appendChild(f.firstChild);a.appendChild(d)}}function b(b){b.onreadystatechange=function(){if(4===b.readyState){var c=b._cachedDocument;c||(c=b._cachedDocument=document.implementation.createHTMLDocument(""),c.body.innerHTML=b.responseText,b._cachedTarget={}),b._embeds.splice(0).map(function(d){var e=b._cachedTarget[d.id];e||(e=b._cachedTarget[d.id]=c.getElementById(d.id)),a(d.parent,d.svg,e)})}},b.onreadystatechange()}function c(c){function e(){for(var c=0;c<o.length;){var h=o[c],i=h.parentNode,j=d(i),k=h.getAttribute("xlink:href")||h.getAttribute("href");if(!k&&g.attributeName&&(k=h.getAttribute(g.attributeName)),j&&k){if(f)if(!g.validate||g.validate(k,j,h)){i.removeChild(h);var l=k.split("#"),q=l.shift(),r=l.join("#");if(q.length){var s=m[q];s||(s=m[q]=new XMLHttpRequest,s.open("GET",q),s.send(),s._embeds=[]),s._embeds.push({parent:i,svg:j,id:r}),b(s)}else a(i,j,document.getElementById(r))}else++c,++p}else++c}(!o.length||o.length-p>0)&&n(e,67)}var f,g=Object(c),h=/\bTrident\/[567]\b|\bMSIE (?:9|10)\.0\b/,i=/\bAppleWebKit\/(\d+)\b/,j=/\bEdge\/12\.(\d+)\b/,k=/\bEdge\/.(\d+)\b/,l=window.top!==window.self;f="polyfill"in g?g.polyfill:h.test(navigator.userAgent)||(navigator.userAgent.match(j)||[])[1]<10547||(navigator.userAgent.match(i)||[])[1]<537||k.test(navigator.userAgent)&&l;var m={},n=window.requestAnimationFrame||setTimeout,o=document.getElementsByTagName("use"),p=0;f&&e()}function d(a){for(var b=a;"svg"!==b.nodeName.toLowerCase()&&(b=b.parentNode););return b}return c});
 $(function () {
-  // var fixedMenuDesktop = $(".site-header").stickme();
-  // fixedMenuDesktop.update();
-  // $.stickme({
-  // top: 10
-  // });
-  $(".site-header").stickMe({triggerAtCenter: false});
-  // переключение тени шапки при скроллинге
-  // $(window).scroll(function () {
-  //   if ($(document).scrollTop() > 0) {
-  //     fixedMenuDesktop.addClass("main-nav--shadow");
-  //   } else {
-  //     fixedMenuDesktop.removeClass("main-nav--shadow");
-  //   }
-  // });
+  var menu = $("ul.main-nav__list");
+  var logo = $("div.main-nav__logo");
+  var comment = $("textarea.order__field--comment");
+  var toggleMenu = $("div.main-nav__toggle-menu");
 
-  // слайдер второго этажа промо блока
-  $(".promo").owlCarousel({
-    items: 1,
-    nav: true,
-    navText: ["<svg class=\"symbol  symbol-arrow--left\"><use xlink:href=\"img/sprite/sprite.svg#arrow--left\"></use></svg>",
-      "<svg class=\"symbol  symbol-arrow--right\"><use xlink:href=\"img/sprite/sprite.svg#arrow--right\"></use></svg>"],
-    dots: false,
-    loop: true,
-    autoplay: false,
-    autoplayHoverPause: true,
-    autoplayTimeout: 7000
-  });
+  // фиксация главного меню
+  $("header.site-header").stickMe({triggerAtCenter: false});
 
   if ($(window).outerWidth() < 768) {
     // слайдер блока тарифов на мобильной версии
-    $(".rates__list").owlCarousel({
+    $("div.rates__list").owlCarousel({
       items: 1,
       nav: true,
       navText: ["<svg class=\"symbol  symbol-arrow--left\"><use xlink:href=\"img/sprite/sprite.svg#arrow--left\"></use></svg>",
@@ -187,18 +167,58 @@ $(function () {
       loop: true
     });
     //слайдер блока преимуществ на мобильной версии
-    $(".features__list").owlCarousel({
+    $("div.features__list").owlCarousel({
       items: 1,
       nav: true,
       navText: ["<svg class=\"symbol  symbol-arrow--left\"><use xlink:href=\"img/sprite/sprite.svg#arrow--left\"></use></svg>",
         "<svg class=\"symbol  symbol-arrow--right\"><use xlink:href=\"img/sprite/sprite.svg#arrow--right\"></use></svg>"],
       dots: false,
-      loop: true
+      loop: true,
+      onChanged: function () {
+        accordion(".features__item", ".features__text");
+      }
+    });
+    //слайдер блока результатов на мобильной версии
+    $("div.results__list").owlCarousel({
+      items: 1,
+      nav: true,
+      navText: ["<svg class=\"symbol  symbol-arrow--left\"><use xlink:href=\"img/sprite/sprite.svg#arrow--left\"></use></svg>",
+        "<svg class=\"symbol  symbol-arrow--right\"><use xlink:href=\"img/sprite/sprite.svg#arrow--right\"></use></svg>"],
+      dots: false,
+      // loop: true,
+      margin: 5
+    }).on("changed.owl.carousel", function () {
+      $("div.results__caption").toggleClass("results__caption--current");
+    });
+    //слайдер блока серверов на мобильной версии
+    $("div.servers__list").owlCarousel({
+      items: 1,
+      nav: true,
+      navText: ["<svg class=\"symbol  symbol-arrow--left\"><use xlink:href=\"img/sprite/sprite.svg#arrow--left\"></use></svg>",
+        "<svg class=\"symbol  symbol-arrow--right\"><use xlink:href=\"img/sprite/sprite.svg#arrow--right\"></use></svg>"],
+      dots: false,
+      loop: true,
+      onChanged: function () {
+        accordion(".servers__item", ".servers__text");
+      }
     });
   }
 
+  // слайдер промо блока
+  $("section.promo").owlCarousel({
+    items: 1,
+    nav: true,
+    navText: ["<svg class=\"symbol  symbol-arrow--left\"><use xlink:href=\"img/sprite/sprite.svg#arrow--left\"></use></svg>",
+      "<svg class=\"symbol  symbol-arrow--right\"><use xlink:href=\"img/sprite/sprite.svg#arrow--right\"></use></svg>"],
+    dots: false,
+    loop: true,
+    autoplay: true,
+    autoplayHoverPause: true,
+    autoplayTimeout: 7000
+  });
+
   //слайдер блока партнерав
-  $(".partners__list").owlCarousel({
+  $("div.partners__list").owlCarousel({
     autoWidth: true,
     nav: true,
     navText: ["<svg class=\"symbol  symbol-arrow--left\"><use xlink:href=\"img/sprite/sprite.svg#arrow--left\"></use></svg>",
@@ -208,11 +228,13 @@ $(function () {
   });
 
   //слайдер блока отзывов
-  $(".reviews__list").owlCarousel({
+  $("div.reviews__list").owlCarousel({
     items: 1,
-    // autoplay: true,
     dotsContainer: ".reviews__dots",
     loop: true,
+    // autoplay: true,
+    autoplayHoverPause: true,
+    autoplayTimeout: 7000,
     responsive: {
       0: {
         margin: 5,
@@ -227,8 +249,16 @@ $(function () {
     }
   });
 
+  // обработчик кнопки заказ
+  $("a.main-nav__order").click(function () {
+    menu.removeClass("main-nav__list--show");
+    logo.removeClass("main-nav__logo--hide");
+    toggleMenu.removeClass("main-nav__toggle-menu--close");
+    toggleMenu.addClass("main-nav__toggle-menu--open");
+  });
+
   // переключение состояния меню и логотипа мобильной версии
-  $(".main-nav__toggle-menu").click(function (event) {
+  toggleMenu.click(function (event) {
     event.preventDefault();
     if ($(this).hasClass("main-nav__toggle-menu--open")) {
       $(this).removeClass("main-nav__toggle-menu--open");
@@ -243,11 +273,6 @@ $(function () {
     }
   });
 
-  writeCostMonth("#rates__output--4");
-  writeCostMonth("#rates__output--2");
-  accordion(".features__item", ".features__text");
-  svg4everybody();
-
   // обработчик событий селектора количества месяцев тарифов
   $("#rates__4").change(function () {
     outputCostRate(calcDiscount, "#rates__4", "#rates__output--4");
@@ -257,7 +282,7 @@ $(function () {
   });
 
   // переключение тени при невлезающем тексте слайдера
-  $(".promo__text").each(function (ind) {
+  $("div.promo__text").each(function (ind) {
     var parentHeight = $(this).height();
     var childHeight = $(this).children("p").height();
     if (parentHeight <= childHeight) {
@@ -266,22 +291,62 @@ $(function () {
       $(this).removeClass("promo__text--full");
     }
   });
-  $("#promo").ready(function () {
-  });
 
-  // перключение слайдера о дублированным стрелкам
+  // перключение слайдера по дублированным стрелкам
   $(".promo__prev").click(function () {
-    $(".owl-prev").trigger("click");
+    $(".promo .owl-prev").trigger("click");
   });
   $(".promo__next").click(function () {
-    $(".owl-next").trigger("click");
+    $(".promo .owl-next").trigger("click");
   });
+  $(".rates__next").click(function () {
+    $(".rates .owl-next").trigger("click");
+  });
+  $(".results__prev").click(function () {
+    $(".results .owl-prev").trigger("click");
+  });
+  $(".results__next").click(function () {
+    $(".results .owl-next").trigger("click");
+  });
+
+  // обработчик ссылки показа поля для комментария
+  $("#add-comment").click(function (event) {
+    event.preventDefault();
+    if (comment.hasClass("order__field--comment-show")) {
+      $(this).text("Добавить комментарий");
+      comment.removeClass("order__field--comment-show");
+    } else {
+      $(this).text("Убрать комментарий");
+      comment.addClass("order__field--comment-show");
+    }
+  });
+
+  // обработчик поля ввода номера телефона
+  $("#phone").focus(function () {
+    $(this).val("+375 ");
+  });
+  $("#phone").keypress(function (event) {
+    var inputNumberKey = String.fromCharCode(event.charCode);
+    var keyCode = event.keyCode;
+    var cursorPosition = event.target.selectionStart;
+    if (!(/[\d\+]/.test(String.fromCharCode(event.charCode)) || keyCode == 8 || keyCode == 9 || keyCode == 46 || keyCode == 37 || keyCode == 39)) {
+      event.preventDefault();
+    }
+    if (event.target.selectionStart > 0 && inputNumberKey == "+") {
+      event.preventDefault();
+    }
+    if ($(this).val().length == 13) {
+      event.preventDefault();
+    }
+  });
+
+  writeCostMonth("#rates__output--4");
+  writeCostMonth("#rates__output--2");
+  accordion(".features__item", ".features__text", "features__item--show");
+  accordion(".servers__item", ".servers__text", "servers__item--show");
+  svg4everybody();
 });
-
 //*******************************************************************************************************
-
-var menu = $(".main-nav__list");
-var logo = $(".main-nav__logo");
 
 // проверка на число
 function isNumeric(n) {
@@ -324,19 +389,22 @@ function outputCostRate(call, input, output) {
 }
 
 //аккордион блока преимуществ
-function accordion(item, text) {
+function accordion(item, text, classShow) {
   $(item + " " + text).hide();
   $(item).hover(function () {
       var oldItem = $(text + ":visible");
       var activeItem = $(this).find(text);
       if (activeItem.is(":visible")) return false;
+      $(this).addClass(classShow);
       oldItem.stop().slideUp();
       activeItem.stop().slideDown();
     },
     function () {
+      $(this).removeClass(classShow);
       $(text + ":visible").slideUp();
     });
   $(item).click(function () {
+    $(this).addClass(classShow);
     var oldItem = $(text + ":visible");
     var activeItem = $(this).find(text);
     if (activeItem.is(":visible")) return false;
