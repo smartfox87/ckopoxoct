@@ -4,6 +4,9 @@ $(function () {
   var comment = $("textarea.order__field--comment");
   var toggleMenu = $("div.main-nav__toggle-menu");
 
+  // инициализация анимации элементов при скроллинге
+  new WOW().init();
+
   // фиксация главного меню
   $("header.site-header").stickMe({triggerAtCenter: false});
 
@@ -63,7 +66,7 @@ $(function () {
       "<svg class=\"symbol  symbol-arrow--right\"><use xlink:href=\"img/sprite/sprite.svg#arrow--right\"></use></svg>"],
     dots: false,
     loop: true,
-    autoplay: true,
+    // autoplay: true,
     autoplayHoverPause: true,
     autoplayTimeout: 7000
   });
@@ -83,7 +86,7 @@ $(function () {
     items: 1,
     dotsContainer: ".reviews__dots",
     loop: true,
-    // autoplay: true,
+    autoplay: true,
     autoplayHoverPause: true,
     autoplayTimeout: 7000,
     responsive: {
