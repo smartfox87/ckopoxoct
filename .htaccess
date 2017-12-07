@@ -1,0 +1,12 @@
+Allow from all
+Satisfy any
+RewriteEngine On
+RewriteCond %{HTTP_HOST} skorohost.test1.newsite.by
+RewriteRule (.*) http://skorohost.by/$1 [R=301,L]
+<ifModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus  1 month"
+</ifModule>
+<ifModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml image/svg+xml text/css text/javascript application/javascript application/x-javascript
+</ifModule>
