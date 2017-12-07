@@ -1,6 +1,15 @@
 @import "../../scss/variables.scss";
 @import "../../scss/mixins.scss";
 
+@keyframes rocket {
+  0% {
+    bottom: -73%;
+  }
+  100% {
+    bottom: 100%;
+  }
+}
+
 .results {
   @include font--1(15px, 1.27, #ffffff);
   min-width: $desktop__container-min-width;
@@ -10,37 +19,57 @@
 
 .results__wrapper {
   @include container($desktop__container-width);
-  background: url("../img/bg__results--rocket.png") 45% 73% / auto 73% no-repeat;
-  padding: 78px $desktop__container-padding 86px;
+  position: relative;
   max-width: $desktop__container-max-width;
+  padding: 78px $desktop__container-padding 86px;
+  overflow: hidden;
+}
+
+.results__rocket {
+  @include center-x();
+  bottom: 0;
+  z-index: 1;
+  height: 73%;
+  animation: rocket 25s cubic-bezier(0.20, 0.7, 0.80, 0.3) infinite;
 }
 
 .results__title {
-  font-size: calcFontSize(50, 55, 1024, 1600);
-  font-weight: 400;
-  text-align: center;
+  position: relative;
+  z-index: 2;
   margin: 0;
   padding: 0 0 38px;
+  font-weight: 400;
+  font-size: calcFontSize(50, 55, 1024, 1600);
+  text-align: center;
+  span {
+    background-color: #1d053f;
+  }
 }
 
 .results__list {
   display: flex;
   justify-content: space-between;
   padding-bottom: 57px;
+  padding-left: 2em;
+}
+
+.results__toggles {
+  display: none;
 }
 
 .results__caption {
-  @include pseudo-after(100%, 4px);
-  font-size: calcFontSize(43, 48, 1024, 1600);
-  font-weight: 400;
-  margin: 0 0 48px;
-  display: inline-block;
-  padding: 0;
+  @include pseudo-after(98%, 4px);
   position: relative;
+  display: inline-block;
+  margin: 0 0 48px;
+  padding: 0;
+  font-weight: 400;
+  font-size: calcFontSize(43, 48, 1024, 1600);
   color: #e9b22d;
   &::after {
-    left: 0;
     bottom: 0.05em;
+    left: 2%;
+    display: none;
     background-color: #e9b22d;
   }
 }
@@ -63,12 +92,157 @@
 .results__text {
   margin: 0;
   padding: 3px 0 36px;
-  opacity: 0.3;
+  opacity: 0.5;
 }
 
 .results__button {
+  position: relative;
+  z-index: 2;
   display: flex;
   justify-content: center;
+}
+
+@media ($mobile__width-mq) {
+  .results {
+    min-width: $mobile__container-min-width;
+    font-size: 4.5vw;
+    line-height: 1.2;
+    background: none;
+    background-color: #191919;
+    @include gradient-y(#021a4d, #23003c);
+  }
+  
+  .results__wrapper {
+    @include container($mobile__container-width);
+    position: relative;
+    max-width: $mobile__container-max-width;
+    padding: $mobile__container-padding;
+    background: none;
+  }
+  
+  .results__rocket {
+    display: none;
+  }
+  
+  .results__title {
+    width: 82vw;
+    margin-bottom: 30vw;
+    padding: 0;
+    font-size: 12.5vw;
+    line-height: 1;
+    text-align: left;
+  }
+  
+  .results__list {
+    padding-bottom: 0;
+    padding-left: 0;
+  }
+  
+  .results__toggles {
+    @include center-x();
+    top: 27vw;
+    display: flex;
+    box-sizing: border-box;
+    height: 14vw;
+    background-color: #364677;
+    border-radius: 2vw;
+    .results__caption {
+      height: 100%;
+      margin: 0;
+      padding: 0 4vw;
+      font-size: 7vw;
+      line-height: 14vw;
+      border-radius: 2vw;
+    }
+  }
+  
+  .results__caption {
+    font-size: 12vw;
+    line-height: 1;
+  }
+  
+  .results__caption--current {
+    color: #20033d;
+    background-color: #e9b22d;
+  }
+  
+  .results__caption--hide {
+    display: none;
+  }
+  
+  .results__item {
+    width: auto;
+    &:hover {
+      color: #ffffff;
+    }
+  }
+  
+  .results__item--big {
+    width: auto;
+  }
+  
+  .results__name {
+    font-size: 7.7vw;
+    line-height: 1;
+  }
+  
+  .results__text {
+    padding-top: 12px;
+    opacity: 0.75;
+  }
+}
+
+@media ($mobile__width-mq) and (orientation: landscape) {
+  .results {
+    font-size: 4.5vw * 0.6;
+  }
+  
+  .results__wrapper {
+    padding: $mobile__container-padding * 0.56;
+  }
+  
+  .results__title {
+    width: 100%;
+    margin-bottom: 30vw * 0.6;
+    font-size: 11vw * 0.6;
+    text-align: center;
+  }
+  
+  .results__toggles {
+    top: 27vw * 0.6;
+    height: 14vw * 0.6;
+    border-radius: 2vw * 0.6;
+    .results__caption {
+      padding: 0 4vw * 0.6;
+      font-size: 7vw * 0.6;
+      line-height: 14vw * 0.6;
+      border-radius: 2vw * 0.6;
+    }
+  }
+  
+  .results__list {
+    .owl-nav {
+      display: none;
+    }
+  }
+  
+  .results__caption {
+    font-size: 12vw * 0.6;
+  }
+  
+  .results__name {
+    font-size: 7.7vw * 0.6;
+  }
+  
+  .results__text {
+    padding-top: 0.3em;
+    padding-bottom: 1.2em;
+  }
+  
+  .results__button {
+    width: 82vw * 0.8;
+    margin: 1em auto 0;
+  }
 }
 
 @media ($desktop__width-mq) {

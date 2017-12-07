@@ -3,14 +3,15 @@
 
 .awards {
   @include font--1(21px, 1.29, #ffffff);
+  font-size: calcFontSize(21, 24, 1024, 1600);
   background-color: #2771a1;
-  background-image: url('../img/bg__awards--cup.png'),
+  background-image: url('../img/bg__awards--cup.svg'),
   url("../img/bg__awards.jpg");
   background-repeat: no-repeat,
   no-repeat;
-  background-position: 63vw top,
+  background-position: 120% 145%,
   left top;
-  background-size: auto 100%,
+  background-size: auto 92%,
   cover;
 }
 
@@ -19,22 +20,20 @@
   min-width: $desktop__container-min-width;
   max-width: $desktop__container-max-width;
   padding: 72px $desktop__container-padding 38px;
+  padding: 72px $desktop__container-padding 72px;
 }
 
 .awards__title {
+  max-width: 25em;
   margin: 0 0 35px;
   padding: 0;
   font-weight: 400;
-  font-size: 32px;
+  font-size: calcFontSize(32, 36, 1024, 1600);
+  br {
+    display: none;
+  }
   span {
-    @include pseudo-after(100%, 3px);
-    position: relative;
     color: #ffdd21;
-    &::after {
-      top: 100%;
-      left: 0;
-      background-color: #ffdd21;
-    }
   }
 }
 
@@ -46,7 +45,7 @@
 
 @media ($mobile__width-mq) {
   .awards {
-    background-image: url('../img/bg__awards--cup.png'),
+    background-image: url('../img/bg__awards--cup.svg'),
     url("../img/bg__awards--mobile.jpg");
     background-position: right bottom,
     left top;
@@ -58,11 +57,11 @@
     @include container($mobile__container-width);
     min-width: $mobile__container-min-width;
     max-width: $mobile__container-max-width;
-    padding: $mobile__container-padding $mobile__container-padding 60vw;
+    padding: $mobile__container-padding $mobile__container-padding 68vw;
   }
   
   .awards__title {
-    font-size: 8.1vw;
+    font-size: 7.35vw;
   }
   
   .awards__text {
@@ -71,9 +70,40 @@
   }
 }
 
-@media (min-width: 1200px) {
+@media ($mobile__width-mq) and (orientation: landscape) {
   .awards {
-    background-position: right top,
+    background-image: url('../img/bg__awards--cup.svg'),
+    url("../img/bg__awards--mobile.jpg");
+    background-position: right bottom,
+    left top;
+    background-size: 82.7% * 0.6 auto,
+    cover;
+  }
+  
+  .awards__wrapper {
+    padding: $mobile__container-padding * 0.56 $mobile__container-padding * 0.56 68vw * 0.6;
+    br {
+      display: none;
+    }
+  }
+  
+  .awards__title {
+    font-size: 7.8vw * 0.6;
+  }
+  
+  .awards__text {
+    font-size: 4.83vw * 0.6;
+  }
+  
+  .awards__button {
+    width: 82vw * 0.8;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1280px) {
+  .awards {
+    background-position: right bottom,
     left top;
   }
   
@@ -83,8 +113,19 @@
 }
 
 @media ($desktop__width-mq) {
+  .awards {
+    font-size: 24px;
+    background-size: auto 100%,
+    cover;
+  }
+  
   .awards__wrapper {
-    padding: 120px 80px 90px;
+    padding: 72px 80px 38px;
+    padding: 72px 80px 72px;
+  }
+  
+  .awards__title {
+    font-size: 36px;
   }
   
   .awards__text {

@@ -9,6 +9,11 @@
   cursor: default;
 }
 
+.rates__anchor {
+  position: relative;
+  top: -30px;
+}
+
 .rates__wrapper {
   @include container($desktop__container-width);
   max-width: $desktop__container-max-width;
@@ -17,7 +22,7 @@
 
 .rates__title {
   margin: 0 0 3.7%;
-  padding: 0;
+  padding: 0.05em 0 0;
   font-weight: 400;
   font-size: calcFontSize(38, 44, 1024, 1600);
   line-height: 1;
@@ -85,6 +90,10 @@
     justify-content: space-between;
     line-height: 1.75;
   }
+  i {
+    list-style: none;
+    font-weight: 700;
+  }
 }
 
 .rates__ok {
@@ -107,7 +116,7 @@
 }
 
 .rates__month {
-  font-size: calcFontSize(30, 34, 1024, 1600);
+  font-size: calcFontSize(25, 28, 1024, 1600);
   line-height: 1;
   span {
     font-size: calcFontSize(39, 45, 1024, 1600);
@@ -123,20 +132,46 @@
   margin-bottom: calcFontSize(18, 27, 1024, 1600);
   color: #999999;
   span {
-    font-size: calcFontSize(11, 14, 1024, 1600);
+    font-size: calcFontSize(12, 14, 1024, 1600);
   }
-  select {
-    padding: 4px 8px;
+}
+
+.rates__select {
+  position: relative;
+  min-width: 5.7em;
+  padding: 4px 1em 4px 8px;
+  font-size: calcFontSize(16, 19, 1024, 1600);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: calcFontSize(6, 9, 1024, 1600);
+  transition-duration: $btn-duration-anim;
+  &:hover {
+    border: 1px solid rgba(0, 0, 0, 0.7);
+    &::after {
+      border-bottom-color: rgba(0, 0, 0, 0.7);
+      border-left-color: rgba(0, 0, 0, 0.7);
+    }
+  }
+  &::after {
+    @include checkbox-in(0.55em, 0.55em, 0.08em, rgba(0, 0, 0, 0.3));
+    top: 0.35em;
+    right: 0.5em;
+    z-index: 1;
+    display: block;
+  }
+  span {
     font-size: calcFontSize(16, 19, 1024, 1600);
     line-height: 1;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    border-radius: calcFontSize(6, 9, 1024, 1600);
-    outline: none;
+    color: #000000;
+  }
+  select {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
     cursor: pointer;
-    transition-duration: $btn-duration-anim;
-    &:hover {
-      border: 1px solid rgba(0, 0, 0, 0.7);
-    }
+    opacity: 0;
   }
 }
 
@@ -148,7 +183,7 @@
 
 .rates__additionally {
   margin-bottom: 10px;
-  padding: calcFontSize(15, 23, 1024, 1600) 7.5%;
+  padding: calcFontSize(18, 25, 1024, 1600) 7.5%;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: calcFontSize(12, 18, 1024, 1600);
   box-shadow: 2.1px 2.1px 5px rgba(0, 0, 0, 0.2);
@@ -156,7 +191,7 @@
     margin: 0;
     padding: 0 0 calcFontSize(10, 15, 1024, 1600);
     font-size: calcFontSize(20, 23, 1024, 1600);
-    line-height: 1.35;
+    line-height: 0.9;
   }
   .rates__row {
     display: flex;
@@ -175,8 +210,10 @@
 
 .rates__question {
   margin-bottom: 10px;
-  padding: calcFontSize(10, 15, 1024, 1600) 7.5%;
-  text-align: center;
+  padding: calcFontSize(15, 22, 1024, 1600) 7.5%;
+  font-size: calcFontSize(15, 17, 1024, 1600);
+  line-height: 1.5;
+  text-align: left;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: calcFontSize(12, 18, 1024, 1600);
   box-shadow: 2.1px 2.1px 5px rgba(0, 0, 0, 0.2);
@@ -185,6 +222,8 @@
 .rates__question-link {
   font-weight: 700;
   color: #ffc000;
+  text-decoration: underline;
+  cursor: pointer;
   transition-duration: $btn-duration-anim;
   &:hover {
     color: #ff9600;
@@ -193,30 +232,29 @@
 }
 
 .rates__discount {
-  padding: calcFontSize(12, 18, 1024, 1600) 7.5%;
+  padding: calcFontSize(18, 25, 1024, 1600) 7.5%;
   background-color: rgba(154, 21, 223, 0.5);
   border-radius: calcFontSize(12, 18, 1024, 1600);
   box-shadow: 2.1px 2.1px 5px rgba(0, 0, 0, 0.2);
   h3 {
     margin: 0;
-    padding: 8px 0;
-    font-size: calcFontSize(31, 35, 1024, 1600);
+    padding: 0 0 8px;
+    font-size: calcFontSize(29, 32, 1024, 1600);
     line-height: 1;
     span {
       display: block;
       font-weight: 400;
-      font-size: calcFontSize(23, 26, 1024, 1600);
+      font-size: calcFontSize(22, 25, 1024, 1600);
+      line-height: 0.9;
       color: #ffc000;
     }
   }
   .rates__row {
-    font-size: calcFontSize(16, 18, 1024, 1600);
-    line-height: 1.45;
+    font-size: calcFontSize(15, 17, 1024, 1600);
+    line-height: 1.3;
     span {
       display: inline-block;
-      min-width: 40px;
-      font-size: calcFontSize(20, 22.5, 1024, 1600);
-      text-align: right;
+      font-size: calcFontSize(19, 21, 1024, 1600);
       color: #ffc000;
     }
   }
@@ -246,10 +284,6 @@
     .owl-stage {
       padding-top: 10px;
     }
-    .owl-prev,
-    .owl-next {
-      opacity: 0.8;
-    }
     .owl-prev {
       left: -4.5vw;
     }
@@ -258,13 +292,18 @@
     }
   }
   
+  .rates__anchor {
+    top: -130px;
+  }
+  
   .rates__wrapper {
-    padding-bottom: $mobile__container-padding / 2;
+    padding-bottom: $mobile__container-padding;
     font-size: 3.89vw;
   }
   
   .rates__title {
     margin-bottom: 6vw;
+    padding-top: 0;
     font-size: 8.61vw;
   }
   
@@ -308,10 +347,16 @@
       margin-bottom: 1.39vw;
       font-size: 3.61vw;
     }
-    select {
-      padding: 1.5vw;
+  }
+  
+  .rates__select {
+    top: 0;
+    min-width: 6.25em;
+    padding: 1.5vw;
+    font-size: 8vw;
+    border-radius: 1.5vw;
+    span {
       font-size: 8vw;
-      border-radius: 1.5vw;
     }
   }
   
@@ -345,8 +390,8 @@
   .rates__question {
     margin-bottom: 7vw;
     padding: 5vw;
+    font-size: 4.5vw;
     border-radius: 3.33vw;
-    //font-size: 3.89vw;
   }
   
   .rates__discount {
@@ -369,8 +414,137 @@
   
   .rates__next {
     display: block;
+    margin-bottom: 0;
     font-size: 8vw;
     text-align: center;
+  }
+}
+
+@media ($mobile__width-mq) and (orientation: landscape) {
+  .rates {
+    padding: 0;
+    .owl-stage-outer {
+      width: calc(82vw * 0.8 + 12px);
+      padding-left: 12px;
+    }
+    .owl-stage {
+      padding-top: 10px;
+    }
+    .owl-prev {
+      left: -4.5vw;
+    }
+    .owl-next {
+      right: -4.5vw;
+    }
+  }
+  
+  .rates__wrapper {
+    padding-bottom: $mobile__container-padding * 0.56;
+    font-size: 3.89vw * 0.6;
+  }
+  
+  .rates__title {
+    margin-bottom: 6vw * 0.6;
+    font-size: 8.61vw * 0.6;
+  }
+  
+  .rates__item {
+    width: 82vw * 0.8;
+    margin-bottom: 8vw * 0.6;
+    padding: 8vw * 0.6 5.56vw * 0.6;
+    border-radius: 3.33vw;
+  }
+  
+  .rates__item--advanced {
+    padding: 0;
+  }
+  
+  .rates__caption {
+    margin-bottom: 4.17vw * 0.6;
+    font-size: 8.4vw * 0.6;
+  }
+  
+  .rates__description {
+    margin-bottom: 5.56vw * 0.6;
+  }
+  
+  .rates__specification {
+    margin-bottom: 3.8vw * 0.6;
+  }
+  
+  .rates__month {
+    font-size: 10vw * 0.6;
+    span {
+      font-size: 12.5vw * 0.6;
+    }
+  }
+  
+  .rates__time {
+    margin-bottom: 7.5vw * 0.6;
+    span {
+      margin-bottom: 1.39vw * 0.6;
+      font-size: 3.61vw * 0.6;
+    }
+  }
+  
+  .rates__select {
+    padding: 1.5vw * 0.6;
+    font-size: 8vw * 0.6;
+    border-radius: 1.5vw * 0.6;
+    span {
+      font-size: 8vw * 0.6;
+    }
+  }
+  
+  .rates__buttons {
+    padding: 0 7%;
+  }
+  
+  .rates__trial {
+    margin-bottom: 4.72vw * 0.6;
+  }
+  
+  .rates__additionally {
+    margin-bottom: 7vw * 0.6;
+    padding: 6vw * 0.6;
+    font-size: 14px * 0.6;
+    border-radius: 3.33vw * 0.6;
+    h3 {
+      font-size: 5.56vw * 0.6;
+    }
+    .rates__row {
+      font-size: 3.89vw * 0.6;
+    }
+  }
+  
+  .rates__question {
+    margin-bottom: 7vw * 0.6;
+    padding: 5vw * 0.6;
+    font-size: 4.5vw * 0.6;
+    border-radius: 3.33vw * 0.6;
+  }
+  
+  .rates__discount {
+    padding: 6vw * 0.6;
+    font-size: 20px * 0.6;
+    border-radius: 3.33vw * 0.6;
+    h3 {
+      font-size: 8.61vw * 0.6;
+      span {
+        font-size: 6.67vw * 0.6;
+      }
+    }
+    .rates__row {
+      font-size: 4.44vw * 0.6;
+      span {
+        font-size: 5.56vw * 0.6;
+      }
+    }
+  }
+  
+  .rates__next {
+    margin-bottom: 0;
+    font-size: 8vw * 0.6;
   }
 }
 
@@ -378,6 +552,10 @@
   .rates__item {
     width: 32%;
     max-width: 440px;
+  }
+  
+  .rates__select {
+    top: -2em;
   }
   
   .rates__item--advanced {
@@ -425,6 +603,7 @@
   
   .rates__month {
     font-size: 34px;
+    font-size: 28px;
     span {
       font-size: 45px;
     }
@@ -436,14 +615,18 @@
     span {
       font-size: 14px;
     }
-    select {
+  }
+  
+  .rates__select {
+    font-size: 19px;
+    border-radius: 7px;
+    span {
       font-size: 19px;
-      border-radius: 9px;
     }
   }
   
   .rates__additionally {
-    padding: 30px 7.5%;
+    padding: 25px 7.5%;
     border-radius: 18px;
     h3 {
       padding: 0 0 15px;
@@ -458,23 +641,24 @@
   }
   
   .rates__question {
-    padding: 15px 7.5%;
+    padding: 22px 7.5%;
+    font-size: 18px;
     border-radius: 18px;
   }
   
   .rates__discount {
-    padding: 24px 7.5%;
+    padding: 25px 7.5%;
     border-radius: 18px;
     h3 {
-      font-size: 34px;
+      font-size: 32px;
       span {
-        font-size: 26px;
+        font-size: 25px;
       }
     }
     .rates__row {
-      font-size: 18px;
+      font-size: 17px;
       span {
-        font-size: 22px;
+        font-size: 21px;
       }
     }
   }

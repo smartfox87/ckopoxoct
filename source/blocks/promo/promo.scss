@@ -3,6 +3,7 @@
 
 .promo {
   @include container($desktop__container-width);
+  display: block;
   min-width: $desktop__container-min-width;
   font-size: calcFontSize(16, 18.5, 1024, 1600);
   line-height: 1.38;
@@ -28,7 +29,12 @@
 }
 
 .promo__item--2 {
-  background: url("../img/bg__promo--2.jpg") no-repeat top left;
+  background: none;
+}
+
+.promo__item--3 {
+  background-image: url("../img/bg__order.jpg");
+  background-position: center right;
 }
 
 .promo__wrapper {
@@ -39,18 +45,44 @@
   box-sizing: border-box;
   max-width: $desktop__container-max-width;
   height: 43vw;
-  max-height: 540px;
+  max-height: 470px;
   padding: 5.7% 29% $desktop__container-padding $desktop__container-padding;
 }
 
+.promo__video,
+.promo__shield {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(1024px + (1600 - 1024) * (100vw - 1024px) / (1600 - 1024));
+  max-width: 1600px;
+  height: calc((1024px + (1600 - 1024) * (100vw - 1024px) / (1600 - 1024)) * 0.5625);
+  max-height: 900px;
+}
+
+.promo__video--hide {
+  display: none;
+}
+
+.promo__shield {
+  @include gradient-x(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  height: 100%;
+}
+
 .promo__caption {
+  position: relative;
+  z-index: 2;
   margin: 0;
-  padding: 0;
+  padding: 0.19em 0;
   font-weight: 700;
-  font-size: calcFontSize(42, 50, 1024, 160);
+  font-size: calcFontSize(42, 50, 1024, 1600);
+  line-height: 1;
 }
 
 .promo__description {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
   margin: 0;
   padding: 0;
   font-size: calcFontSize(24, 29, 1024, 1600);
@@ -61,7 +93,6 @@
 .promo__text {
   @include pseudo-after(100%, 1.2em);
   position: relative;
-  min-height: 6em;
   margin: 1.2em 0 2.8em;
   line-height: 1.5;
   &::after {
@@ -87,6 +118,7 @@
 @media ($mobile__width-mq) {
   .promo {
     @include container($mobile__container-width);
+    display: block;
     min-width: $mobile__container-min-width;
     max-width: $mobile__container-max-width;
     .promo__prev,
@@ -96,13 +128,18 @@
     .owl-prev,
     .owl-next {
       display: block;
-      opacity: 0.8;
+    }
+    .owl-prev {
+      left: 1vw;
+    }
+    .owl-next {
+      right: 1vw;
     }
   }
   
   .promo__wrapper {
     width: 100vw;
-    height: 114vw;
+    height: 124vw;
     max-height: 850px;
     padding: $mobile__container-padding;
   }
@@ -113,6 +150,19 @@
   
   .promo__item--2 {
     background-image: url('../img/bg__promo--2-mobile.jpg');
+    background-size: 100% auto;
+  }
+  
+  .promo__item--3 {
+    background-image: url("../img/bg__order--mobile.jpg");
+  }
+  
+  .promo__video {
+    display: none;
+  }
+  
+  .promo__shield {
+    display: none;
   }
   
   .promo__caption {
@@ -135,8 +185,51 @@
   }
 }
 
+@media ($mobile__width-mq) and (orientation: landscape) {
+  .promo {
+    .owl-prev {
+      left: 0.56vw;
+    }
+    .owl-next {
+      right: 0.56vw;
+    }
+  }
+  
+  .promo__wrapper {
+    width: 100vw;
+    height: 55vw;
+    max-height: 600px;
+    padding: $mobile__container-padding*0.6;
+  }
+  
+  .promo__caption {
+    padding-bottom: 3.64vw;
+    font-size: 7.64vw*0.6;
+    line-height: 0.85;
+  }
+  
+  .promo__description {
+    font-size: 4.18vw*0.6;
+  }
+  
+  .promo__text {
+    min-height: 4em;
+    font-size: 3.45vw*0.6;
+  }
+  
+  .promo__more {
+    display: none;
+  }
+  
+  .promo__buttons {
+    width: 82vw * 0.8;
+    margin: 0 auto;
+  }
+}
+
 @media (min-width: 1280px) {
   .promo__wrapper {
+    max-height: 530px;
     padding-right: 34%;
   }
 }

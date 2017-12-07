@@ -13,53 +13,51 @@
   height: 100%;
 }
 
-.symbol-servers--cluster {
-  width: 67.23px;
-  height: 67.23px;
+.servers__name {
+  .symbol {
+    @include center-y();
+    left: -2.4em;
+    width: 1.6em;
+    height: 1.92em;
+    fill: #ffffff;
+  }
+  
+  .symbol-servers--equipment {
+    width: 1.4em;
+  }
+  
+  .symbol-servers--soft {
+    width: 1.55em;
+  }
+  
+  .symbol-servers--ssd {
+    width: 1.4em;
+  }
+  
+  .symbol-servers--cluster {
+    left: -2.6em;
+    width: 1.9em;
+  }
+  
+  .symbol-servers--power {
+    left: -2.7em;
+    width: 1.95em;
+  }
+  
+  .symbol-servers--protection {
+    height: 2.1em;
+  }
+  
+  .symbol-servers--security {
+    height: 2.2em;
+  }
 }
 
-.symbol-servers--data {
-  width: 41.66px;
-  height: 59.17px;
+@media ($mobile__width-mq) {
+  .results {
+    .symbol {
+      color: #e9b22d;
+      display: none;
+    }
+  }
 }
-
-.symbol-servers--equipment {
-  width: 45.31px;
-  height: 57.81px;
-}
-
-.symbol-servers--internet {
-  width: 39.27px;
-  height: 65.84px;
-}
-
-.symbol-servers--mirror {
-  width: 56px;
-  height: 56px;
-}
-
-.symbol-servers--power {
-  width: 58.28px;
-  height: 60.48px;
-}
-
-.symbol-servers--protection {
-  width: 43.42px;
-  height: 66.35px;
-}
-
-.symbol-servers--security {
-  width: 44.71px;
-  height: 65.1px;
-}
-
-.symbol-servers--soft {
-  width: 63.31px;
-  height: 53.45px;
-}
-
-.symbol-servers--ssd {
-  width: 45.31px;
-  height: 55.84px;
-}
-

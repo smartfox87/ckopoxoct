@@ -9,7 +9,7 @@
   flex-wrap: wrap;
   align-items: center;
   max-width: $desktop__container-max-width;
-  padding-top: calcFontSize(16, 18, 1024, 1600);
+  padding-top: calcFontSize(15, 17, 1024, 1600);
   padding-bottom: calcFontSize(16, 18, 1024, 1600);
   font-size: calcFontSize(17, 19, 1024, 1600);
   line-height: 1.38;
@@ -19,7 +19,7 @@
 .main-nav__logo {
   flex-grow: 3;
   margin-right: 20px;
-  img {
+  svg {
     width: 16.89vw;
     min-width: 173px;
     max-width: 260px;
@@ -106,7 +106,7 @@
     margin: 0;
     padding: 5.45vw 0;
     background-color: #ffffff;
-    img {
+    svg {
       width: 82vw;
       max-width: 550px;
       height: 10vw;
@@ -116,7 +116,7 @@
   }
   
   .main-nav__logo--hide {
-    img {
+    svg {
       opacity: 0;
     }
   }
@@ -223,9 +223,84 @@
   }
 }
 
+@media ($mobile__width-mq) and (orientation: landscape) {
+  .main-nav {
+    justify-content: space-between;
+    align-items: stretch;
+  }
+  
+  .main-nav__logo {
+    flex-grow: 0;
+    order: 1;
+    padding: 3.05vw*0.7 0 3.05vw*0.7 $mobile__container-padding*0.56;
+    svg {
+      width: 38vw;
+      height: 4.65vw;
+    }
+  }
+  
+  .main-nav__logo--hide {
+    svg {
+      opacity: 1;
+    }
+  }
+  
+  .main-nav__list {
+    top: 11vw;
+    width: 41%;
+    height: 84vw;
+  }
+  
+  .main-nav__item {
+    a {
+      margin-left: 3.58vw;
+      font-size: 3.58vw;
+      line-height: 1.57;
+    }
+  }
+  
+  .main-nav__purchase-block {
+    flex-grow: 0;
+    order: 2;
+    width: 51%;
+    padding: 1.82vw $mobile__container-padding*1.35 1.82vw 0;
+    background-color: #ffffff;
+    border-bottom: none;
+  }
+  
+  .main-nav__phone {
+    font-size: 3vw;
+    span {
+      font-size: 2.8vw;
+    }
+  }
+  
+  .main-nav__toggle-menu {
+    right: $mobile__container-padding*0.56;
+  }
+  
+  .main-nav__toggle-menu--open {
+    @include hamburger(#000000, #000000, 4.4vw, 3.9vw, 0.95vw);
+    position: absolute;
+  }
+  
+  .main-nav__toggle-menu--close {
+    width: 5vw;
+    span {
+      @include modal-close(5vw, 5vw, 5vw, 1vw, #000000);
+    }
+  }
+  
+  .main-nav__user-block--mobile {
+    padding-top: 2.5vw;
+    padding-bottom: 2.5vw;
+    padding-left: 3.58vw;
+  }
+}
+
 @media ($desktop__width-mq) {
   .main-nav {
-    padding: 18px 80px;
+    padding: 17px 80px 18px;
     font-size: 19px;
   }
   

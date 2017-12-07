@@ -1,9 +1,207 @@
-@import "../../scss/variables.scss";   
-@import "../../scss/mixins.scss";  
-/* шаблон вставки в html 
-
-*/   
+@import "../../scss/variables.scss";
+@import "../../scss/mixins.scss";
 
 .servers {
+  @include font--1(22px, 1.2, #ffffff);
+  min-width: $desktop__container-min-width;
+  font-size: calcFontSize(22, 25, 1024, 1600);
+  background: #285981 url("../img/bg__servers.jpg") top left / cover no-repeat;
+}
+
+.servers__wrapper {
+  max-width: $desktop__container-max-width;
+  padding: 78px 0 82px;
+  @include container($desktop__container-width);
+}
+
+.servers__title {
+  margin: 0 0 58px;
+  padding: 0;
+  font-weight: 400;
+  font-size: calcFontSize(45, 51, 1024, 1600);
+  line-height: 1.2;
+  text-align: center;
+  br {
+    display: none;
+  }
+}
+
+.servers__list {
+  display: flex;
+  justify-content: space-around;
+  box-sizing: border-box;
+  margin-bottom: 2.4em;
+  padding: 0 $desktop__container-padding;
+}
+
+.servers__column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.servers__item {
+  box-sizing: border-box;
+  width: 20.3em;
+  padding: 1.05em 0 1.33em 2.92em;
+  &:hover {
+    .servers__name {
+      color: #ffd249;
+    }
+  }
+}
+
+.servers__item--show {
+  .servers__name {
+    span {
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
+
+.servers__name {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  span {
+    @include pseudo-after(100%, 2px);
+    position: relative;
+    &::after {
+      top: 1.2em;
+      left: 0;
+      background: linear-gradient(to right, #ffffff, #ffffff 60%, transparent 60%) 0 0 / 10px 2px repeat-x;
+    }
+  }
+}
+
+.servers__text {
+  box-sizing: border-box;
+  width: 25em;
+  margin: 0;
+  padding: 0.7em;
+  font-size: calcFontSize(15, 17, 1024, 1600);
+  line-height: 1.2;
+  color: #ffd249;
+  background-color: #2f80af;
+  border-radius: 0.5vw;
+  cursor: default;
+}
+
+.servers__button {
+  display: flex;
+  justify-content: center;
+}
+
+@media ($mobile__width-mq) {
+  .servers {
+    min-width: $mobile__container-min-width;
+    font-size: 5vw;
+    background: #285981 url("../img/bg__servers--mobile.jpg") top left / cover no-repeat;
+  }
   
+  .servers__wrapper {
+    @include container($mobile__container-width);
+    max-width: $mobile__container-max-width;
+    padding: $mobile__container-padding;
+  }
+  
+  .servers__title {
+    margin-bottom: 9vw;
+    font-size: 10.5vw;
+    text-align: left;
+    br {
+      display: block;
+    }
+  }
+  
+  .servers__list {
+    margin-bottom: 0;
+    padding: 0 0 5vw;
+  }
+  
+  .servers__item {
+    width: 82vw;
+    padding-left: 14.5vw;
+  }
+  
+  .servers__name {
+    line-height: 1.3;
+    span {
+      &::after {
+        top: 1.1em;
+      }
+    }
+  }
+  
+  .servers__text {
+    width: 67vw;
+    border-radius: 2vw;
+  }
+}
+
+@media ($mobile__width-mq) and (orientation: landscape) {
+  .servers {
+    font-size: 5vw * 0.6;
+  }
+  
+  .servers__wrapper {
+    padding: $mobile__container-padding * 0.56;
+  }
+  
+  .servers__title {
+    margin-bottom: 2vw;
+    font-size: 10.5vw * 0.6;
+    line-height: 1;
+    text-align: center;
+    br {
+      display: none;
+    }
+  }
+  
+  .servers__list {
+    width: 82vw * 0.8;
+    margin: 0 auto;
+    padding: 0 0 5vw * 0.6;
+  }
+  
+  .servers__item {
+    width: 82vw * 0.8;
+    padding: 0.7em 0 0.8em 2.92em;
+    padding-left: 14.5vw * 0.6;
+  }
+  
+  .servers__text {
+    width: 56vw;
+    border-radius: 2vw * 0.6;
+  }
+  
+  .servers__button {
+    width: 82vw * 0.8;
+    margin: 1em auto 0;
+  }
+}
+
+@media ($desktop__width-mq) {
+  .servers {
+    font-size: 25px;
+  }
+  
+  .servers__title {
+    font-size: 51px;
+  }
+  
+  .servers__list {
+    margin-bottom: 75px;
+  }
+  
+  .servers__item {
+    margin-left: 87px;
+  }
+  
+  .servers__text {
+    font-size: 17px;
+    border-radius: 8px;
+  }
 }

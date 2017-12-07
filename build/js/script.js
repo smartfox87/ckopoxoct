@@ -1,14 +1,3 @@
-/*! 
- jQuery StickMe Plugin v1.2.1
- http://stickme.martinmetodiev.com
-
- Copyright (c) 2017 Martin Metodiev
- Licensed under the MIT license.
-*/
-
-
-!function(a){'use strict';var b={base:{options:{top:0}},events:['onStick','onUnstick','onDestroy'],dom:{observer:a('<div class="stickme_observer">'),holder:a('<div class="stickme-holder">')},setup:{target:function(b){return b&&b.hasOwnProperty('target')?b.target:a('.stickme')},options:function(c){var d={},e={};return function(){for(var a in b.base.options)b.base.options.hasOwnProperty(a)&&(d[a]=c&&c.hasOwnProperty(a)?c[a]:b.base.options[a])}(),function(){for(var a=0;a<b.events.length;a++)c&&c.hasOwnProperty(b.events[a])&&(e[b.events[a]]=c[b.events[a]])}(),a.extend(d,{events:e}),d}},methods:{init:function(a){var c=this;c.options=b.setup.options(a),c.createObserver(),c.setPosition();for(var d in c.options.events)c.options.events.hasOwnProperty(d)&&c.children().bind(d,c.options.events[d]);return c},getPosition:function(){return a(this.observer).offset().top-a(document).scrollTop()},setPosition:function(){var a=this;a.position=a.getPosition();var b=a.status||null;return a.status=a.position<=a.options.top?'stick':'unstick',a.status!==b&&a[a.status](),a},createObserver:function(){var a=this;return a.observer=b.dom.observer.clone(),a.before(a.observer),a},setStyles:function(){var a=this;return a.css({width:a.observer.width(),position:'fixed',zIndex:10,left:a.observer.offset().left,top:a.options.top}),a.observer.height(a.height()),a},stick:function(){var a=this;return a.children().trigger('onStick',[a.children()]),a.stickmeMode='sticked',a.observer.height(a.height()),a.setStyles(),a},unstick:function(){var a=this;return a.children().trigger('onUnstick',[a.children()]),a.stickmeMode='unsticked',a.observer.height(0),a.removeAttr('style'),a},resizeHandler:function(){var a=this;return a.stickmeMode&&'sticked'===a.stickmeMode&&a.setStyles(),a}},output:{extended:!0,update:function(){return this.each(function(){var b=a(this).parent('.stickme-holder')[0],c=b.stickme;'sticked'===c.stickmeMode&&c.setStyles()}),this},destroy:function(){this.each(function(){var b=a(this).parent('.stickme-holder')[0],c=b.stickme;'sticked'===c.stickmeMode&&c.unstick(),c.observer.remove(),function(){for(var a in c.options)c.options.hasOwnProperty(a)&&c.children().unbind(a,c.options[a])}();for(var d=0;d<a.stickme.targets.length;d++)if(b===a.stickme.targets[d][0]){a.stickme.targets.splice(d,1);break}c.children().trigger('onDestroy',[c.children()]),c.before(c.children()),c.remove(),delete b.stickme});for(var c in b.output)b.output.hasOwnProperty(c)&&this.hasOwnProperty[b.output[c]]&&delete this[b.output[c]];return this}}};a.stickme=function(c){var d=b.setup.target(c);return d.each(function(){if(!a(this).parent().is('.stickme-holder')){var d=b.dom.holder.clone();a(this).after(d),d.append(a(this))}var e=a(this).parent('.stickme-holder')[0];if(!e.stickme){a.extend(e,{stickme:a.extend(a(e),b.methods)});var f=e.stickme;a.stickme.targets.push(f.init(c))}}),d.extended||a.extend(d,b.output),d},a.fn.stickme=function(b){return b=a.extend({},b,{target:a(this)}),a.stickme(b)},a.stickme.targets=[],a(document).bind('scroll',function(){for(var b in a.stickme.targets)if(a.stickme.targets.hasOwnProperty(b)){var c=a.stickme.targets[b];c.setPosition()}}),a(window).bind('resize',function(){for(var b in a.stickme.targets)if(a.stickme.targets.hasOwnProperty(b)){var c=a.stickme.targets[b];c.resizeHandler()}})}(jQuery);
-//# sourceMappingURL=jquery.stickme.min.js.map
 /**
  * Owl Carousel v2.2.1
  * Copyright 2013-2017 David Deutsch
@@ -147,58 +136,105 @@ a.fn.owlCarousel.Constructor.Plugins.Animate=e}(window.Zepto||window.jQuery,wind
 }(jQuery));
 
 !function(a,b){"function"==typeof define&&define.amd?define([],function(){return a.svg4everybody=b()}):"object"==typeof module&&module.exports?module.exports=b():a.svg4everybody=b()}(this,function(){function a(a,b,c){if(c){var d=document.createDocumentFragment(),e=!b.hasAttribute("viewBox")&&c.getAttribute("viewBox");e&&b.setAttribute("viewBox",e);for(var f=c.cloneNode(!0);f.childNodes.length;)d.appendChild(f.firstChild);a.appendChild(d)}}function b(b){b.onreadystatechange=function(){if(4===b.readyState){var c=b._cachedDocument;c||(c=b._cachedDocument=document.implementation.createHTMLDocument(""),c.body.innerHTML=b.responseText,b._cachedTarget={}),b._embeds.splice(0).map(function(d){var e=b._cachedTarget[d.id];e||(e=b._cachedTarget[d.id]=c.getElementById(d.id)),a(d.parent,d.svg,e)})}},b.onreadystatechange()}function c(c){function e(){for(var c=0;c<o.length;){var h=o[c],i=h.parentNode,j=d(i),k=h.getAttribute("xlink:href")||h.getAttribute("href");if(!k&&g.attributeName&&(k=h.getAttribute(g.attributeName)),j&&k){if(f)if(!g.validate||g.validate(k,j,h)){i.removeChild(h);var l=k.split("#"),q=l.shift(),r=l.join("#");if(q.length){var s=m[q];s||(s=m[q]=new XMLHttpRequest,s.open("GET",q),s.send(),s._embeds=[]),s._embeds.push({parent:i,svg:j,id:r}),b(s)}else a(i,j,document.getElementById(r))}else++c,++p}else++c}(!o.length||o.length-p>0)&&n(e,67)}var f,g=Object(c),h=/\bTrident\/[567]\b|\bMSIE (?:9|10)\.0\b/,i=/\bAppleWebKit\/(\d+)\b/,j=/\bEdge\/12\.(\d+)\b/,k=/\bEdge\/.(\d+)\b/,l=window.top!==window.self;f="polyfill"in g?g.polyfill:h.test(navigator.userAgent)||(navigator.userAgent.match(j)||[])[1]<10547||(navigator.userAgent.match(i)||[])[1]<537||k.test(navigator.userAgent)&&l;var m={},n=window.requestAnimationFrame||setTimeout,o=document.getElementsByTagName("use"),p=0;f&&e()}function d(a){for(var b=a;"svg"!==b.nodeName.toLowerCase()&&(b=b.parentNode););return b}return c});
+/*! WOW wow.js - v1.3.0 - 2016-10-04
+* https://wowjs.uk
+* Copyright (c) 2016 Thomas Grainger; Licensed MIT */!function(a,b){if("function"==typeof define&&define.amd)define(["module","exports"],b);else if("undefined"!=typeof exports)b(module,exports);else{var c={exports:{}};b(c,c.exports),a.WOW=c.exports}}(this,function(a,b){"use strict";function c(a,b){if(!(a instanceof b))throw new TypeError("Cannot call a class as a function")}function d(a,b){return b.indexOf(a)>=0}function e(a,b){for(var c in b)if(null==a[c]){var d=b[c];a[c]=d}return a}function f(a){return/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(a)}function g(a){var b=arguments.length<=1||void 0===arguments[1]?!1:arguments[1],c=arguments.length<=2||void 0===arguments[2]?!1:arguments[2],d=arguments.length<=3||void 0===arguments[3]?null:arguments[3],e=void 0;return null!=document.createEvent?(e=document.createEvent("CustomEvent"),e.initCustomEvent(a,b,c,d)):null!=document.createEventObject?(e=document.createEventObject(),e.eventType=a):e.eventName=a,e}function h(a,b){null!=a.dispatchEvent?a.dispatchEvent(b):b in(null!=a)?a[b]():"on"+b in(null!=a)&&a["on"+b]()}function i(a,b,c){null!=a.addEventListener?a.addEventListener(b,c,!1):null!=a.attachEvent?a.attachEvent("on"+b,c):a[b]=c}function j(a,b,c){null!=a.removeEventListener?a.removeEventListener(b,c,!1):null!=a.detachEvent?a.detachEvent("on"+b,c):delete a[b]}function k(){return"innerHeight"in window?window.innerHeight:document.documentElement.clientHeight}Object.defineProperty(b,"__esModule",{value:!0});var l,m,n=function(){function a(a,b){for(var c=0;c<b.length;c++){var d=b[c];d.enumerable=d.enumerable||!1,d.configurable=!0,"value"in d&&(d.writable=!0),Object.defineProperty(a,d.key,d)}}return function(b,c,d){return c&&a(b.prototype,c),d&&a(b,d),b}}(),o=window.WeakMap||window.MozWeakMap||function(){function a(){c(this,a),this.keys=[],this.values=[]}return n(a,[{key:"get",value:function(a){for(var b=0;b<this.keys.length;b++){var c=this.keys[b];if(c===a)return this.values[b]}}},{key:"set",value:function(a,b){for(var c=0;c<this.keys.length;c++){var d=this.keys[c];if(d===a)return this.values[c]=b,this}return this.keys.push(a),this.values.push(b),this}}]),a}(),p=window.MutationObserver||window.WebkitMutationObserver||window.MozMutationObserver||(m=l=function(){function a(){c(this,a),"undefined"!=typeof console&&null!==console&&(console.warn("MutationObserver is not supported by your browser."),console.warn("WOW.js cannot detect dom mutations, please call .sync() after loading new content."))}return n(a,[{key:"observe",value:function(){}}]),a}(),l.notSupported=!0,m),q=window.getComputedStyle||function(a){var b=/(\-([a-z]){1})/g;return{getPropertyValue:function(c){"float"===c&&(c="styleFloat"),b.test(c)&&c.replace(b,function(a,b){return b.toUpperCase()});var d=a.currentStyle;return(null!=d?d[c]:void 0)||null}}},r=function(){function a(){var b=arguments.length<=0||void 0===arguments[0]?{}:arguments[0];c(this,a),this.defaults={boxClass:"wow",animateClass:"animated",offset:0,mobile:!0,live:!0,callback:null,scrollContainer:null,resetAnimation:!0},this.animate=function(){return"requestAnimationFrame"in window?function(a){return window.requestAnimationFrame(a)}:function(a){return a()}}(),this.vendors=["moz","webkit"],this.start=this.start.bind(this),this.resetAnimation=this.resetAnimation.bind(this),this.scrollHandler=this.scrollHandler.bind(this),this.scrollCallback=this.scrollCallback.bind(this),this.scrolled=!0,this.config=e(b,this.defaults),null!=b.scrollContainer&&(this.config.scrollContainer=document.querySelector(b.scrollContainer)),this.animationNameCache=new o,this.wowEvent=g(this.config.boxClass)}return n(a,[{key:"init",value:function(){this.element=window.document.documentElement,d(document.readyState,["interactive","complete"])?this.start():i(document,"DOMContentLoaded",this.start),this.finished=[]}},{key:"start",value:function(){var a=this;if(this.stopped=!1,this.boxes=[].slice.call(this.element.querySelectorAll("."+this.config.boxClass)),this.all=this.boxes.slice(0),this.boxes.length)if(this.disabled())this.resetStyle();else for(var b=0;b<this.boxes.length;b++){var c=this.boxes[b];this.applyStyle(c,!0)}if(this.disabled()||(i(this.config.scrollContainer||window,"scroll",this.scrollHandler),i(window,"resize",this.scrollHandler),this.interval=setInterval(this.scrollCallback,50)),this.config.live){var d=new p(function(b){for(var c=0;c<b.length;c++)for(var d=b[c],e=0;e<d.addedNodes.length;e++){var f=d.addedNodes[e];a.doSync(f)}});d.observe(document.body,{childList:!0,subtree:!0})}}},{key:"stop",value:function(){this.stopped=!0,j(this.config.scrollContainer||window,"scroll",this.scrollHandler),j(window,"resize",this.scrollHandler),null!=this.interval&&clearInterval(this.interval)}},{key:"sync",value:function(){p.notSupported&&this.doSync(this.element)}},{key:"doSync",value:function(a){if("undefined"!=typeof a&&null!==a||(a=this.element),1===a.nodeType){a=a.parentNode||a;for(var b=a.querySelectorAll("."+this.config.boxClass),c=0;c<b.length;c++){var e=b[c];d(e,this.all)||(this.boxes.push(e),this.all.push(e),this.stopped||this.disabled()?this.resetStyle():this.applyStyle(e,!0),this.scrolled=!0)}}}},{key:"show",value:function(a){return this.applyStyle(a),a.className=a.className+" "+this.config.animateClass,null!=this.config.callback&&this.config.callback(a),h(a,this.wowEvent),this.config.resetAnimation&&(i(a,"animationend",this.resetAnimation),i(a,"oanimationend",this.resetAnimation),i(a,"webkitAnimationEnd",this.resetAnimation),i(a,"MSAnimationEnd",this.resetAnimation)),a}},{key:"applyStyle",value:function(a,b){var c=this,d=a.getAttribute("data-wow-duration"),e=a.getAttribute("data-wow-delay"),f=a.getAttribute("data-wow-iteration");return this.animate(function(){return c.customStyle(a,b,d,e,f)})}},{key:"resetStyle",value:function(){for(var a=0;a<this.boxes.length;a++){var b=this.boxes[a];b.style.visibility="visible"}}},{key:"resetAnimation",value:function(a){if(a.type.toLowerCase().indexOf("animationend")>=0){var b=a.target||a.srcElement;b.className=b.className.replace(this.config.animateClass,"").trim()}}},{key:"customStyle",value:function(a,b,c,d,e){return b&&this.cacheAnimationName(a),a.style.visibility=b?"hidden":"visible",c&&this.vendorSet(a.style,{animationDuration:c}),d&&this.vendorSet(a.style,{animationDelay:d}),e&&this.vendorSet(a.style,{animationIterationCount:e}),this.vendorSet(a.style,{animationName:b?"none":this.cachedAnimationName(a)}),a}},{key:"vendorSet",value:function(a,b){for(var c in b)if(b.hasOwnProperty(c)){var d=b[c];a[""+c]=d;for(var e=0;e<this.vendors.length;e++){var f=this.vendors[e];a[""+f+c.charAt(0).toUpperCase()+c.substr(1)]=d}}}},{key:"vendorCSS",value:function(a,b){for(var c=q(a),d=c.getPropertyCSSValue(b),e=0;e<this.vendors.length;e++){var f=this.vendors[e];d=d||c.getPropertyCSSValue("-"+f+"-"+b)}return d}},{key:"animationName",value:function(a){var b=void 0;try{b=this.vendorCSS(a,"animation-name").cssText}catch(c){b=q(a).getPropertyValue("animation-name")}return"none"===b?"":b}},{key:"cacheAnimationName",value:function(a){return this.animationNameCache.set(a,this.animationName(a))}},{key:"cachedAnimationName",value:function(a){return this.animationNameCache.get(a)}},{key:"scrollHandler",value:function(){this.scrolled=!0}},{key:"scrollCallback",value:function(){if(this.scrolled){this.scrolled=!1;for(var a=[],b=0;b<this.boxes.length;b++){var c=this.boxes[b];if(c){if(this.isVisible(c)){this.show(c);continue}a.push(c)}}this.boxes=a,this.boxes.length||this.config.live||this.stop()}}},{key:"offsetTop",value:function(a){for(;void 0===a.offsetTop;)a=a.parentNode;for(var b=a.offsetTop;a.offsetParent;)a=a.offsetParent,b+=a.offsetTop;return b}},{key:"isVisible",value:function(a){var b=a.getAttribute("data-wow-offset")||this.config.offset,c=this.config.scrollContainer&&this.config.scrollContainer.scrollTop||window.pageYOffset,d=c+Math.min(this.element.clientHeight,k())-b,e=this.offsetTop(a),f=e+a.clientHeight;return d>=e&&f>=c}},{key:"disabled",value:function(){return!this.config.mobile&&f(navigator.userAgent)}}]),a}();b["default"]=r,a.exports=b["default"]});
 $(function () {
-  // var fixedMenuDesktop = $(".site-header").stickme();
-  // fixedMenuDesktop.update();
-  // $.stickme({
-  // top: 10
-  // });
-  $(".site-header").stickMe({triggerAtCenter: false});
-  // переключение тени шапки при скроллинге
-  // $(window).scroll(function () {
-  //   if ($(document).scrollTop() > 0) {
-  //     fixedMenuDesktop.addClass("main-nav--shadow");
-  //   } else {
-  //     fixedMenuDesktop.removeClass("main-nav--shadow");
-  //   }
-  // });
+  var menu = $("ul.main-nav__list");
+  var logo = $("div.main-nav__logo");
+  var comment = $("textarea.order__field--comment");
+  var toggleMenu = $("div.main-nav__toggle-menu");
 
-  // слайдер второго этажа промо блока
-  $(".promo").owlCarousel({
+  // инициализация анимации элементов при скроллинге
+  new WOW().init();
+
+  // фиксация главного меню
+  $("header.site-header").stickMe({triggerAtCenter: false});
+
+  if ($(window).outerWidth() < 768) {
+    var topMenu = $(".main-nav__purchase-block").outerHeight();
+    $(".main-nav__list").css("top", topMenu);
+
+    // слайдер блока тарифов на мобильной версии
+    $("div.rates__list").owlCarousel({
+      items: 1,
+      nav: true,
+      rewind: true,
+      navText: ["<svg class=\"symbol  symbol-arrow--left\"><use xlink:href=\"img/sprite/sprite.svg#arrow--left\"></use></svg>",
+        "<svg class=\"symbol  symbol-arrow--right\"><use xlink:href=\"img/sprite/sprite.svg#arrow--right\"></use></svg>"],
+      dots: false,
+      responsive: {
+        0: {
+          center: false
+        },
+        630: {
+          center: true
+        }
+      }
+    });
+    //слайдер блока преимуществ на мобильной версии
+    $("div.features__list").owlCarousel({
+      items: 1,
+      nav: true,
+      navText: ["<svg class=\"symbol  symbol-arrow--left\"><use xlink:href=\"img/sprite/sprite.svg#arrow--left\"></use></svg>",
+        "<svg class=\"symbol  symbol-arrow--right\"><use xlink:href=\"img/sprite/sprite.svg#arrow--right\"></use></svg>"],
+      dots: false,
+      loop: true,
+      onChanged: function () {
+        accordion(".features__item", ".features__text");
+      },
+      responsive: {
+        0: {
+          center: false
+        },
+        630: {
+          center: true
+        }
+      }
+    });
+    //слайдер блока результатов на мобильной версии
+    $("div.results__list").owlCarousel({
+      items: 1,
+      nav: true,
+      navText: ["<svg class=\"symbol  symbol-arrow--left\"><use xlink:href=\"img/sprite/sprite.svg#arrow--left\"></use></svg>",
+        "<svg class=\"symbol  symbol-arrow--right\"><use xlink:href=\"img/sprite/sprite.svg#arrow--right\"></use></svg>"],
+      dots: false,
+      rewind: true,
+      // loop: true,
+      margin: 5
+    }).on("changed.owl.carousel", function () {
+      $("div.results__caption").toggleClass("results__caption--current");
+    });
+    //слайдер блока серверов на мобильной версии
+    $("div.servers__list").owlCarousel({
+      items: 1,
+      nav: true,
+      navText: ["<svg class=\"symbol  symbol-arrow--left\"><use xlink:href=\"img/sprite/sprite.svg#arrow--left\"></use></svg>",
+        "<svg class=\"symbol  symbol-arrow--right\"><use xlink:href=\"img/sprite/sprite.svg#arrow--right\"></use></svg>"],
+      dots: false,
+      loop: true,
+      onChanged: function () {
+        accordion(".servers__item", ".servers__text");
+      }
+    });
+  }
+
+  // слайдер промо блока
+  $("section.promo").owlCarousel({
     items: 1,
     nav: true,
     navText: ["<svg class=\"symbol  symbol-arrow--left\"><use xlink:href=\"img/sprite/sprite.svg#arrow--left\"></use></svg>",
       "<svg class=\"symbol  symbol-arrow--right\"><use xlink:href=\"img/sprite/sprite.svg#arrow--right\"></use></svg>"],
     dots: false,
-    loop: true,
-    autoplay: false,
+    rewind: true,
+    // loop: true,
+    autoplay: true,
     autoplayHoverPause: true,
     autoplayTimeout: 7000
   });
 
-  if ($(window).outerWidth() < 768) {
-    // слайдер блока тарифов на мобильной версии
-    $(".rates__list").owlCarousel({
-      items: 1,
-      nav: true,
-      navText: ["<svg class=\"symbol  symbol-arrow--left\"><use xlink:href=\"img/sprite/sprite.svg#arrow--left\"></use></svg>",
-        "<svg class=\"symbol  symbol-arrow--right\"><use xlink:href=\"img/sprite/sprite.svg#arrow--right\"></use></svg>"],
-      dots: false,
-      loop: true
-    });
-    //слайдер блока преимуществ на мобильной версии
-    $(".features__list").owlCarousel({
-      items: 1,
-      nav: true,
-      navText: ["<svg class=\"symbol  symbol-arrow--left\"><use xlink:href=\"img/sprite/sprite.svg#arrow--left\"></use></svg>",
-        "<svg class=\"symbol  symbol-arrow--right\"><use xlink:href=\"img/sprite/sprite.svg#arrow--right\"></use></svg>"],
-      dots: false,
-      loop: true
-    });
-  }
-
   //слайдер блока партнерав
-  $(".partners__list").owlCarousel({
+  $("div.partners__list").owlCarousel({
     autoWidth: true,
     nav: true,
     navText: ["<svg class=\"symbol  symbol-arrow--left\"><use xlink:href=\"img/sprite/sprite.svg#arrow--left\"></use></svg>",
@@ -208,11 +244,21 @@ $(function () {
   });
 
   //слайдер блока отзывов
-  $(".reviews__list").owlCarousel({
+  $("div.reviews__list").owlCarousel({
     items: 1,
-    // autoplay: true,
     dotsContainer: ".reviews__dots",
     loop: true,
+    autoplay: true,
+    autoplayHoverPause: true,
+    autoplayTimeout: 7000,
+    onChanged: function (event) {
+      var oldSlide = $(event.target).find(".active");
+      if (oldSlide.length > 0) {
+        $(event.target).find(".promo__video").addClass("promo__video--hide");
+      } else {
+        $(event.target).find(".promo__video").removeClass("promo__video--hide");
+      }
+    },
     responsive: {
       0: {
         margin: 5,
@@ -227,8 +273,16 @@ $(function () {
     }
   });
 
+  // обработчик кнопки заказ
+  $("a.main-nav__order").click(function () {
+    menu.removeClass("main-nav__list--show");
+    logo.removeClass("main-nav__logo--hide");
+    toggleMenu.removeClass("main-nav__toggle-menu--close");
+    toggleMenu.addClass("main-nav__toggle-menu--open");
+  });
+
   // переключение состояния меню и логотипа мобильной версии
-  $(".main-nav__toggle-menu").click(function (event) {
+  toggleMenu.click(function (event) {
     event.preventDefault();
     if ($(this).hasClass("main-nav__toggle-menu--open")) {
       $(this).removeClass("main-nav__toggle-menu--open");
@@ -243,11 +297,6 @@ $(function () {
     }
   });
 
-  writeCostMonth("#rates__output--4");
-  writeCostMonth("#rates__output--2");
-  accordion(".features__item", ".features__text");
-  svg4everybody();
-
   // обработчик событий селектора количества месяцев тарифов
   $("#rates__4").change(function () {
     outputCostRate(calcDiscount, "#rates__4", "#rates__output--4");
@@ -257,32 +306,80 @@ $(function () {
   });
 
   // переключение тени при невлезающем тексте слайдера
-  $(".promo__text").each(function (ind) {
-    var parentHeight = $(this).height();
-    var childHeight = $(this).children("p").height();
-    if (parentHeight <= childHeight) {
-      $(this).addClass("promo__text--full");
-    } else {
-      $(this).removeClass("promo__text--full");
-    }
-  });
-  $("#promo").ready(function () {
-  });
+  // $("div.promo__text").each(function (ind) {
+  //   var parentHeight = $(this).height();
+  //   var childHeight = $(this).children("p").height();
+  //   if (parentHeight <= childHeight) {
+  //     $(this).addClass("promo__text--full");
+  //   } else {
+  //     $(this).removeClass("promo__text--full");
+  //   }
+  // });
 
-  // перключение слайдера о дублированным стрелкам
+  // перключение слайдера по дублированным стрелкам
   $(".promo__prev").click(function () {
-    $(".owl-prev").trigger("click");
+    $(".promo .owl-prev").trigger("click");
   });
   $(".promo__next").click(function () {
-    $(".owl-next").trigger("click");
+    $(".promo .owl-next").trigger("click");
   });
+  $(".rates__next").click(function () {
+    $(".rates .owl-next").trigger("click");
+  });
+  $(".results__prev").click(function () {
+    $(".results .owl-prev").trigger("click");
+  });
+  $(".results__next").click(function () {
+    $(".results .owl-next").trigger("click");
+  });
+
+  // обработчик ссылки показа поля для комментария
+  $("#add-comment").click(function (event) {
+    event.preventDefault();
+    if (comment.hasClass("order__field--comment-show")) {
+      $(this).text("Добавить комментарий");
+      comment.removeClass("order__field--comment-show");
+    } else {
+      $(this).text("Убрать комментарий");
+      comment.addClass("order__field--comment-show");
+    }
+  });
+
+
+  // обработчик поля ввода номера телефона
+  $("#phone").focus(function () {
+    if ($(this).val().length <= 5) {
+      $(this).val("+375 ");
+    }
+  });
+  $("#phone").keypress(function (event) {
+    var inputNumberKey = String.fromCharCode(event.charCode);
+    var keyCode = event.keyCode;
+    var cursorPosition = event.target.selectionStart;
+    if (!(/[\d\+]/.test(String.fromCharCode(event.charCode)) || keyCode == 8 || keyCode == 9 || keyCode == 46 || keyCode == 37 || keyCode == 39)) {
+      event.preventDefault();
+    }
+    if (event.target.selectionStart > 0 && inputNumberKey == "+") {
+      event.preventDefault();
+    }
+    if ($(this).val().length == 14 && !(keyCode == 8 || keyCode == 9 || keyCode == 46 || keyCode == 37 || keyCode == 39)) {
+      event.preventDefault();
+    }
+  });
+
+  stylizationSelect("label.order__field--rate");
+  stylizationSelect(".rates__select--2");
+  stylizationSelect(".rates__select--4");
+  writeCostMonth("#rates__output--4");
+  writeCostMonth("#rates__output--2");
+  accordion(".features__item", ".features__text", "features__item--show");
+  accordion(".servers__item", ".servers__text", "servers__item--show");
+  svg4everybody();
+  document.getElementById("video").play();
 });
 
+
 //*******************************************************************************************************
-
-var menu = $(".main-nav__list");
-var logo = $(".main-nav__logo");
-
 // проверка на число
 function isNumeric(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
@@ -324,23 +421,36 @@ function outputCostRate(call, input, output) {
 }
 
 //аккордион блока преимуществ
-function accordion(item, text) {
+function accordion(item, text, classShow) {
   $(item + " " + text).hide();
   $(item).hover(function () {
       var oldItem = $(text + ":visible");
       var activeItem = $(this).find(text);
       if (activeItem.is(":visible")) return false;
+      $(this).addClass(classShow);
       oldItem.stop().slideUp();
       activeItem.stop().slideDown();
     },
     function () {
+      $(this).removeClass(classShow);
       $(text + ":visible").slideUp();
     });
   $(item).click(function () {
+    $(this).addClass(classShow);
     var oldItem = $(text + ":visible");
     var activeItem = $(this).find(text);
     if (activeItem.is(":visible")) return false;
     oldItem.stop().slideUp();
     activeItem.stop().slideDown();
   });
+}
+
+// имитация работы label как select
+function stylizationSelect(item) {
+  var select = $(item).children("select");
+  var text = select.children("option:selected").text();
+  $(item).children("span").text(text);
+  select.change(function () {
+    stylizationSelect(item);
+  })
 }

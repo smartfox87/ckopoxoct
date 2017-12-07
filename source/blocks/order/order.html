@@ -1,3 +1,36 @@
-<div class="order">
-
-</div>
+<section class="order">
+  <div class="order__anchor" id="order"></div>
+  <h2 class="order__title">Заказ аренды сервера</h2>
+  <div class="order__caption">Пробуйте бесплатно на 7 дней</div>
+  <form class="order__form" action="send.php" method="post">
+    <input class="order__field  order__field--name" name="name" type="text" maxlength="30" placeholder="Ваше Имя"
+            required>
+    <input class="order__field  order__field--company" name="company" type="text" maxlength="30"
+            placeholder="Компания" required>
+    <input class="order__field  order__field--phone" id="phone" name="phone" type="tel" placeholder="Телефон" required>
+    <input class="order__field  order__field--mail" name="email" type="email"
+            pattern="^([a-z0-9_\.\-]{1,20})@([a-z0-9\.\-]{1,20})\.([a-z]{2,4})$"
+            title="пример: «nick@mail.com»" maxlength="30" placeholder="E-mail" required>
+    <input class="order__field  order__field--site" name="site" type="text" maxlength="30"
+            pattern="^[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?$"
+            title="пример: «my-site.com»" placeholder="Сайт" required>
+    <label class="order__field  order__field--rate">
+      <span></span>
+      <select class="order__field" name="rate">
+        <option value="«Быстро-2»">Тариф «Быстро-2»</option>
+        <option value="«Быстро-4»">Тариф «Быстро-4»</option>
+      </select>
+    </label>
+    <p class="order__add-comment"><span>Есть особые пожелания?&#8194;</span>
+      <a id="add-comment" href="#"> Добавить комментарий</a>
+    </p>
+    <textarea class="order__field  order__field--comment" name="comment" maxlength="280"></textarea>
+    <label class="order__transfer">
+      <input type="checkbox" name="transfer">
+      <span> Нужен бесплатный перенос сайта</span>
+    </label>
+    <button class="btn  btn--big  btn--yellow  btn--form  wow  bounceInLeft" data-wow-offset="60" name="submit">
+      Заказать
+    </button>
+  </form>
+</section>

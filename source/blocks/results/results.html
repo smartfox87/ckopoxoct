@@ -1,9 +1,14 @@
 <section class="results">
   <div class="results__wrapper">
-    <h2 class="results__title">Вы получаете</h2>
+    <img class="results__rocket" src="../img/bg__results--rocket.svg">
+    <h2 class="results__title"><span>Вы получаете</span></h2>
+    <div class="results__toggles">
+      <div class="results__caption  results__caption--current  results__prev">Результаты</div>
+      <div class="results__caption  results__next">Спокойствие</div>
+    </div>
     <div class="results__list  owl-carousel">
       <div class="results__column">
-        <h3 class="results__caption">Результаты</h3>
+        <h3 class="results__caption  results__caption--hide">Результаты</h3>
         <div class="results__item">
           <span class="results__name">Выше продажи</span>
           <p class="results__text">
@@ -12,30 +17,30 @@
         <div class="results__item">
           <span class="results__name">Экономия</span>
           <p class="results__text">
-            Выгодные тарифы, бесплатный бэкап и https, скидки за кол-во месяцев</p>
+            Выгодные тарифы, бесплатный бэкап и https, скидки за количество месяцев</p>
         </div>
         <div class="results__item">
           <span class="results__name">Рост позиций SEO</span>
           <p class="results__text">
             Поисковики награждают быстрые https сайты лучшими позициями</p>
         </div>
-        <div class="results__item">
-          <span class="results__name">Быстрее обмен с 1С</span>
+        <div class="results__item  results__item--big">
+          <span class="results__name">Мониторинг и уведомления</span>
           <p class="results__text">
-            Актуальность сайта при обмене с 1С ценами, остатками, заказами</p>
+            Постоянный мониторинг нагрузки и ресурсов, уведомления для исключения простоя</p>
         </div>
       </div>
       <div class="results__column">
-        <h3 class="results__caption">Спокойствие</h3>
+        <h3 class="results__caption  results__caption--hide">Спокойствие</h3>
         <div class="results__item  results__item--big">
           <span class="results__name">Быстрая поддержка SLA</span>
           <p class="results__text">
             Личный кабинет для обращений, статусы запросов, email-оповещения</p>
         </div>
-        <div class="results__item  results__item--big">
-          <span class="results__name">Мониторинг и уведомления</span>
+        <div class="results__item">
+          <span class="results__name">Быстрее обмен с 1С</span>
           <p class="results__text">
-            Постоянный мониторинг нагрузки и ресурсов, уведомления для исключения простоя</p>
+            Актуальность сайта при обмене с 1С ценами, остатками, заказами</p>
         </div>
         <div class="results__item  results__item--big">
           <span class="results__name">Резервное копирование</span>
@@ -50,7 +55,8 @@
       </div>
     </div>
     <div class="results__button">
-      <button class="btn  btn--big  btn--yellow">Получите спокойствие</button>
+      <a class="btn  btn--big  btn--yellow  wow  bounceInLeft" href="#order" data-wow-offset="60">Получите
+        спокойствие</a>
     </div>
   </div>
 </section>

@@ -5,9 +5,9 @@
   position: relative;
   display: inline-block;
   box-sizing: border-box;
-  padding: 0 calcFontSize(15, 16, 1024, 1600);
+  padding: 0.25em 0.88em;
   font-size: calcFontSize(17, 18.5, 1024, 1600);
-  line-height: 1.55;
+  line-height: 1.05;
   text-align: center;
   text-decoration: none;
   border: 1px solid;
@@ -59,9 +59,9 @@
 .btn--transparent {
   width: calcFontSize(130, 155, 1024, 1600);
   margin-right: 0;
-  padding: calcFontSize(3, 4.5, 1024, 1600) 0;
+  padding: 0.5em 0;
   font-size: calcFontSize(14, 16, 1024, 1600);
-  line-height: 1.36;
+  line-height: 1.1;
   color: #69a5d1;
   text-transform: none;
   border-color: #ffc000;
@@ -76,7 +76,17 @@
   color: #ffffff;
   background-color: #0470b6;
   border-color: #0470b6;
-  &:hover{
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.btn--white {
+  font-weight: 700;
+  color: #285981;
+  background-color: #ffffff;
+  border-color: #ffffff;
+  &:hover {
     opacity: 0.8;
   }
 }
@@ -88,12 +98,22 @@
     background-color: rgba(255, 146, 0, 0.6);
     border-color: rgba(255, 146, 0, 0.6);
   }
+  
+}
+
+.btn--form {
+  padding: 0 0.67em;
+  font-size: calcFontSize(36, 40, 1024, 1600);
+  line-height: 1.9;
+  color: #000000;
+  border-radius: 0.28em;
 }
 
 @media ($mobile__width-mq) {
   .btn {
-    padding: 0 4vw;
+    padding: 0.35em 0.85em;
     font-size: 4.73vw;
+    border: none;
     border-radius: 22px;
   }
   
@@ -108,8 +128,9 @@
   .btn--login {
     font-weight: 700;
     font-size: 5.1vw;
-    line-height: 1.7;
+    line-height: 1.5;
     color: #131414;
+    text-transform: uppercase;
     background-color: #ffc000;
     border-color: #ffc000;
     border-radius: 34px;
@@ -120,16 +141,19 @@
   }
   
   .btn--big {
+    display: block;
     width: 100%;
-    padding: 5px 15px;
+    margin-right: 0;
+    padding: 0.7em;
     font-size: 8vw;
-    line-height: 2;
+    line-height: 1;
     border-radius: 2.78vw;
   }
   
   .btn--transparent {
-    padding: 0;
+    padding: 0.25em;
     font-size: 4.7vw;
+    border: 1px solid #ffc000;
     border-radius: 1.5vw;
   }
   
@@ -145,18 +169,65 @@
     font-size: 4.5vw;
     border-radius: 1.2vw;
   }
+  
+  .btn--white {
+    font-size: 5vw;
+    border-radius: 1.2vw;
+  }
+}
+
+@media ($mobile__width-mq) and (orientation: landscape) {
+  .btn {
+    padding: 0.35em 0.85em;
+    font-size: 2.66vw;
+  }
+  
+  .btn--order {
+    border: 1px solid #ffc000;
+  }
+  
+  .btn--login {
+    font-size: 2.86vw;
+    line-height: 1.2;
+    border-radius: 34px;
+  }
+  
+  .btn--big {
+    padding: 0.6em 0.85em;
+    font-size: 8vw*0.6;
+    border-radius: 2.78vw*0.6;
+  }
+  
+  .btn--transparent {
+    padding: 0.3em;
+    font-size: 4.7vw * 0.6;
+    border-radius: 1.5vw * 0.6;
+  }
+  
+  .btn--yellow {
+    font-size: 5*0.6vw;
+    border-radius: 1.67*0.6vw;
+  }
+  
+  .btn--blue {
+    font-size: 4.5vw * 0.6;
+    border-radius: 1.2vw * 0.6;
+  }
+  
+  .btn--white {
+    font-size: 5vw * 0.6;
+    border-radius: 1.2vw * 0.6;
+  }
 }
 
 @media ($desktop__width-mq) {
   .btn {
-    padding: 0 16px;
     font-size: 18px;
     border-radius: 19px;
   }
   
   .btn--big {
     margin-right: 11px;
-    padding: 0 30px;
     font-size: 18px;
     border-radius: 9px;
   }
@@ -164,7 +235,10 @@
   .btn--transparent {
     width: 155px;
     margin-right: 0;
-    padding: 4px 0;
     font-size: 16px;
+  }
+  
+  .btn--form {
+    font-size: 40px;
   }
 }

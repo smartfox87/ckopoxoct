@@ -56,6 +56,28 @@
   }
 }
 
+//абсолютный центровщик горизонтальный (позиционирование)
+@mixin center-x($position: absolute) {
+  position: $position;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+//абсолютный центровщик вертикальный (позиционирование)
+@mixin center-y($position: absolute) {
+  position: $position;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+//абсолютный центровщик горизонтальный и вертикальный (позиционирование, горизонтально, вертикально)
+@mixin center-x-y($position: absolute) {
+  position: $position;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
 //абсолютный центровщик горизонтальный на margin(половина ширины)
 @mixin center-x-margin($margin-left: 10px) {
   position: absolute;
@@ -101,7 +123,19 @@
   $k: ($f-max - $f-min)/($w-max - $w-min);
   $b: $f-min - $k * $w-min;
   $b: $b + $units;
-  @return calc( #{$k} * 100vw + #{$b} );
+  @return calc(#{$k} * 100vw + #{$b});
+}
+
+@function calcResponsiveSize($f-min, $f-max, $w-min:$desktop__container-min-width,
+                                $w-max:$desktop__container-max-width, $units: px) {
+  $f-min: strip-unit($f-min);
+  $f-max: strip-unit($f-max);
+  $w-min: strip-unit($w-min);
+  $w-max: strip-unit($w-max);
+  $k: ($f-max - $f-min)/($w-max - $w-min);
+  $b: $f-min - $k * $w-min;
+  $b: $b + $units;
+  @return calc(#{$k} * 100vw + #{$b});
 }
 
 //шрифт 1-й (размер шрифта, высота строки, цвет, толщина шрифта, строчные или прописные)
@@ -428,12 +462,12 @@
   background-repeat: repeat-x;
 }
 
-@mixin gradient-x-three-colors($start-color: #00b3ee, $mid-color: #7a43b6, $color-stop: 50%, $end-color: #c3325f) {
+@mixin gradient-x__3-colors($start-color: #00b3ee, $mid-color: #7a43b6, $color-stop: 50%, $end-color: #c3325f) {
   background-image: linear-gradient(to right, $start-color, $mid-color $color-stop, $end-color);
   background-repeat: no-repeat;
 }
 
-@mixin gradient-y-three-colors($start-color: #00b3ee, $mid-color: #7a43b6, $color-stop: 50%, $end-color: #c3325f) {
+@mixin gradient-y__3-colors($start-color: #00b3ee, $mid-color: #7a43b6, $color-stop: 50%, $end-color: #c3325f) {
   background-image: linear-gradient($start-color, $mid-color $color-stop, $end-color);
   background-repeat: no-repeat;
 }
@@ -447,3 +481,26 @@
   background-image: linear-gradient($angle, $color 25%, transparent 25%, transparent 50%, $color 50%, $color 75%, transparent 75%, transparent);
 }
 
+// имитация пунктирной линии
+@mixin dashed($height: 2px, $width: 100%) {
+  @include pseudo-after($width, $height);
+  position: relative;
+  &::after {
+    background: linear-gradient(to right, #ffffff, #ffffff 60%, transparent 60%) 0 0 / 10px 100% repeat-x;
+  }
+}
+
+// имитация точек
+@mixin dotted {
+  background: linear-gradient(to right, #000000, transparent, transparent) repeat-x 0 1.1em / 4px 1px;
+}
+
+// косой угол у элемента
+@mixin angle {
+  @include triangle(transparent, bottom, 7.4em);
+  left: -3em;
+  bottom: 0;
+  border-right-color: #0470b6;
+  border-right-width: 3em;
+  border-left-width: 0;
+}

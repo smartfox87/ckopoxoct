@@ -1,3 +1,106 @@
-<div class="servers">
+<section class="servers">
+  <div class="servers__wrapper">
+    <h2 class="servers__title">Инновации <br>"под капотом" наших серверов</h2>
+    <div class="servers__list  owl-carousel">
+      <div class="servers__column">
+        <div class="servers__item">
+          <span class="servers__name  servers__name--equipment">
+            @@include("../symbol/symbol.html", {
+            "name": "servers--equipment"
+            })
+            <span>Надежное оборудование</span></span>
+          <p class="servers__text">Сервера Hewlet Packard, процессоры и дисковая подсистема Intel.</p>
+        </div>
+        <div class="servers__item">
+          <span class="servers__name  servers__name--soft">
+            @@include("../symbol/symbol.html", {
+            "name": "servers--soft"
+            })
+            <span>Передовой софт</span></span>
+          <p class="servers__text">Решения от VMWare, AWS, Veeam, Google Cloud Platform, Яндекс Коннект, Zabbix.</p>
+        </div>
+        <div class="servers__item">
+          <span class="servers__name  servers__name--ssd">
+            @@include("../symbol/symbol.html", {
+            "name": "servers--ssd"
+            })
+            <span>Выделенные SSD</span></span>
+          <p class="servers__text">Предоставляем для серверов выделенные SSD с гарантированной пропускной способностью,
+            а не дисковые полки с плавающими параметрами, зависящими от загрузки “соседних” виртуальных серверов,
+            которые также используют данную полку.</p>
+        </div>
+        <div class="servers__item">
+          <span class="servers__name  servers__name--power">
+            @@include("../symbol/symbol.html", {
+            "name": "servers--power"
+            })
+            <span>Резервирование </span><span>электропитания</span></span>
+          <p class="servers__text">Электропитание обеспечивается двумя независимыми вводами от разных электростанций и
+            дизель-генераторной установкой.</p>
+        </div>
 
-</div>
+        <div class="servers__item">
+          <span class="servers__name  servers__name--data">
+            @@include("../symbol/symbol.html", {
+            "name": "servers--data"
+            })
+            <span>Сертифицированный </span><span>дата-центр</span></span>
+          <p class="servers__text">Дата-центр прошел сертификацию по стандарту безопасности PCI-DSS.</p>
+        </div>
+      </div>
+      <div class="servers__column">
+        <div class="servers__item">
+          <span class="servers__name  servers__name--cluster">
+            @@include("../symbol/symbol.html", {
+            "name": "servers--cluster"
+            })
+            <span>Кластеризация</span></span>
+          <p class="servers__text">Если основной сервер выйдет из строя, работа ресурса не прервется, благодаря
+            запасному серверу в кластере. Серверы размещаются в разных дата-центрах, для обеспечения высокой доступности
+            и отказоустойчивости.</p>
+        </div>
+        <div class="servers__item">
+          <span class="servers__name  servers__name--mirror">
+            @@include("../symbol/symbol.html", {
+            "name": "servers--mirror"
+            })
+            <span>Зеркалирование</span></span>
+          <p class="servers__text">Raid-системы для дублирования данных на нескольких винчестерах. Более высокая
+            скорость чтения и защита от сбоя железа.</p>
+        </div>
+        <div class="servers__item">
+          <span class="servers__name  servers__name--internet">
+            @@include("../symbol/symbol.html", {
+            "name": "servers--internet"
+            })
+            <span>Многоканальный интернет</span></span>
+          <p class="servers__text">Оптоволоконная инфраструктура построена по системе «кольцо». Подключение к каналам
+            связи на скорости 100/1000 Мбит/с.</p>
+        </div>
+        <div class="servers__item">
+          <span class="servers__name  servers__name--security">
+            @@include("../symbol/symbol.html", {
+            "name": "servers--security"
+            })
+            <span>Безопасность данных</span></span>
+          <p class="servers__text">Комплекс мер, включая: протоколирование доступа в дата-центр (физически) и на сервер
+            (протоколы), копирование данных на случай утраты, специализированное ПО для проактивной защиты.</p>
+        </div>
+        <div class="servers__item">
+          <span class="servers__name  servers__name--protection">
+            @@include("../symbol/symbol.html", {
+            "name": "servers--protection"
+            })
+            <span>Сетевая защита и лучший </span><span>файервол</span></span>
+          <p class="servers__text">Мониторинг трафика файрволом, блокировки/разблокировки портов по запросу, установка
+            специализированного ПО по запросу.</p>
+        </div>
+
+      </div>
+    </div>
+    <div class="servers__button">
+      <a class="btn  btn--big  btn--white  wow  bounceInLeft" href="#order" data-wow-offset="60">Попробовать бесплатно
+      </a>
+    </div>
+  </div>
+</section>
